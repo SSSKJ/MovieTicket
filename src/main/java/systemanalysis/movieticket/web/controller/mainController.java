@@ -15,11 +15,12 @@ public class mainController {
 	
 	@RequestMapping("/")
 	public String home() {
-		return "";
+		System.out.printf("ok..........");
+		return "index";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/signin")
+	/*@RequestMapping(method = RequestMethod.POST, value = "/signin")
 	public String signin(String username, String password) {
 		return "";
-	}
+	}*/
 }

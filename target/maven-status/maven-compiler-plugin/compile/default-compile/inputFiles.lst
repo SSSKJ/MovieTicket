@@ -1,5 +1,6 @@
 D:\test\server\src\main\java\systemanalysis\movieticket\persistence\dao\AbstractJpaDAO.java
-D:\test\server\src\main\java\systemanalysis\movieticket\persistence\service\Service.java
 D:\test\server\src\main\java\systemanalysis\movieticket\persistence\dao\userInfoDao.java
 D:\test\server\src\main\java\systemanalysis\movieticket\persistence\dao\userInfoDaoImpl.java
+D:\test\server\src\main\java\systemanalysis\movieticket\web\controller\mainController.java
+D:\test\server\src\main\java\systemanalysis\movieticket\persistence\service\userInfoService.java
 D:\test\server\src\main\java\systemanalysis\movieticket\persistence\entity\userInfo.java
