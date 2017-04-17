@@ -11,16 +11,15 @@ import systemanalysis.movieticket.persistence.service.userInfoService;
 public class mainController {
 	
 	@Autowired
-	private userInfoService server;
+	private userInfoService service;
 	
 	@RequestMapping("/")
 	public String home() {
-		System.out.printf("ok..........");
 		return "index";
 	}
 	
-	/*@RequestMapping(method = RequestMethod.POST, value = "/signin")
-	public String signin(String username, String password) {
-		return "";
-	}*/
+	@RequestMapping(method = RequestMethod.POST, value = "/signin")
+	public void signin(String username, String password) {
+		
+	}
 }

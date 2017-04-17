@@ -32,4 +32,8 @@ public class userInfoService {
     public List<userInfo> findAll() {
         return dao.findAll();
     }
+    
+    public void print() {
+    	System.out.println("ok.......................");
+    }
 }

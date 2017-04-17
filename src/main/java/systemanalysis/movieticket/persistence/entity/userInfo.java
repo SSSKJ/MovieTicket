@@ -11,6 +11,11 @@ import javax.persistence.Table;
 @Table(name="userInfo")
 public class userInfo implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column(name="USERNAME")
 	@Id
 	private String username;
@@ -18,8 +23,14 @@ public class userInfo implements Serializable {
 	@Column(name="PASSWORD")
 	private String password;
 	
-	@Column(name="PREFERNECE")
+	@Column(name="PREFERNECE", columnDefinition="")
 	private String preference;
+	
+	public userInfo(){}
+	
+	public userInfo(String username) {
+		this.username = username;
+	}
 	
 	public String getUsername() {
 		return username;
