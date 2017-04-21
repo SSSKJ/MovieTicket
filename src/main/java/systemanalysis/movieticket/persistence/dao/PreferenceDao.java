@@ -18,7 +18,7 @@ public interface PreferenceDao {
 
     void deleteById(String entityemailaddress);
     
-    //通过emailaddress查询所有相关的preference，返回List<Preference>
-    //通过emailaddress删除所有相关的preference
+    //Search all relevant preference by emailaddress and return in type List<Preference>
+    //Delete all relevant preference by emailaddress
     
 }

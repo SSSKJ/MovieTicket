@@ -1,7 +1,7 @@
 package systemanalysis.movieticket.persistence.dao;
 
 public interface OrderFormDao {
-	//通过emailaddress查询order
-	//通过oid删除订单
-	//通过emailaddress删除所有相关订单
+	//Search order by emailaddress
+	//Delete orderform by oid
+	//Delete all relevant orderform by emailaddress
 }
