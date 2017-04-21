@@ -15,20 +15,20 @@ public class SeatInOrderId implements Serializable {
 
 	@JoinColumn(name="orderid", nullable=false)
 	@ManyToOne(fetch=FetchType.LAZY)
-	private Order order;
+	private OrderForm orderform;
 	
 	@Column(name="row", nullable=false)
 	private int row;
 	
-	@Column(name="column", nullable=false)
-	private int column;
+	@Column(name="col", nullable=false)
+	private int col;
 
-	public Order getOrder() {
-		return order;
+	public OrderForm getOrder() {
+		return orderform;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setOrder(OrderForm orderform) {
+		this.orderform = orderform;
 	}
 
 	public int getRow() {
@@ -40,19 +40,19 @@ public class SeatInOrderId implements Serializable {
 	}
 
 	public int getColumn() {
-		return column;
+		return col;
 	}
 
-	public void setColumn(int column) {
-		this.column = column;
+	public void setColumn(int col) {
+		this.col = col;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + column;
-		result = prime * result + ((order == null) ? 0 : order.hashCode());
+		result = prime * result + col;
+		result = prime * result + ((orderform == null) ? 0 : orderform.hashCode());
 		result = prime * result + row;
 		return result;
 	}
@@ -66,12 +66,12 @@ public class SeatInOrderId implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		SeatInOrderId other = (SeatInOrderId) obj;
-		if (column != other.column)
+		if (col != other.col)
 			return false;
-		if (order == null) {
-			if (other.order != null)
+		if (orderform == null) {
+			if (other.orderform != null)
 				return false;
-		} else if (!order.equals(other.order))
+		} else if (!orderform.equals(other.orderform))
 			return false;
 		if (row != other.row)
 			return false;
@@ -80,6 +80,6 @@ public class SeatInOrderId implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "SeatInOrderId [order=" + order + ", row=" + row + ", column=" + column + "]";
+		return "SeatInOrderId [order=" + orderform + ", row=" + row + ", column=" + col + "]";
 	}
 }

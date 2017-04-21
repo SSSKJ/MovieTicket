@@ -14,6 +14,8 @@ public class SeatInOrder implements Serializable {
 	
 	@EmbeddedId
 	private SeatInOrderId id;
+	
+	public SeatInOrder(){}
 
 	public SeatInOrderId getId() {
 		return id;

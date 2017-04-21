@@ -9,11 +9,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="preference")
 public class Preference implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	
 	@EmbeddedId
 	private PreferenceId id;
+	
+	public Preference() {}
 	
 	public Preference(PreferenceId id) {
 		this.id = id;
