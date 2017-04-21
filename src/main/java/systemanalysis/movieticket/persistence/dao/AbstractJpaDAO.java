@@ -11,14 +11,10 @@ public abstract class AbstractJpaDAO<T extends Serializable> {
     private Class<T> clazz;
 
     @PersistenceContext
-    private EntityManager entityManager;
+	protected EntityManager entityManager;
 
     public final void setClazz(final Class<T> clazzToSet) {
         this.clazz = clazzToSet;
-    }
-
-    public T findOne(final String username) {
-        return entityManager.find(clazz, username);
     }
 
     @SuppressWarnings("unchecked")
@@ -37,10 +33,6 @@ public abstract class AbstractJpaDAO<T extends Serializable> {
     public void delete(final T entity) {
         entityManager.remove(entity);
     }
-
-    public void deleteById(final String entityusername) {
-        final T entity = findOne(entityusername);
-        delete(entity);
-    }
+    
 
 }

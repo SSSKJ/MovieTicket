@@ -5,13 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import systemanalysis.movieticket.persistence.service.userInfoService;
+import systemanalysis.movieticket.persistence.service.UserService;
 
 @Controller
 public class mainController {
 	
 	@Autowired
-	private userInfoService service;
+	private UserService service;
 	
 	@RequestMapping("/")
 	public String home() {
