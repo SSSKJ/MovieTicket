@@ -6,7 +6,7 @@ import systemanalysis.movieticket.persistence.entity.Preference;
 
 public interface PreferenceDao {
 	
-	Preference findOne(String username);
+	Preference findOne(String emailaddress);
 
     List<Preference> findAll();
 
@@ -16,5 +16,9 @@ public interface PreferenceDao {
 
     void delete(Preference entity);
 
-    void deleteById(String entityusername);
+    void deleteById(String entityemailaddress);
+    
+    //通过emailaddress查询所有相关的preference，返回List<Preference>
+    //通过emailaddress删除所有相关的preference
+    
 }

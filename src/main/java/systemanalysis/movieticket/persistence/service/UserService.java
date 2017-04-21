@@ -35,5 +35,8 @@ public class UserService {
 	public User update(final User entity) {
 		return userdao.update(entity);
 	}
+	public void deleteById(String name) {
+		userdao.deleteById(name);
+	}
 
 }
