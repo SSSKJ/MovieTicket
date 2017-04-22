@@ -28,7 +28,8 @@ public class PreferenceDaoImpl extends AbstractJpaDAO<Preference> implements Pre
 	
 	@SuppressWarnings("unchecked")
 	public List<Preference> searchAllRelevant(String emailaddress) {
-		Query query = entityManager.createQuery("select * from preference where emailaddress = " + emailaddress);
+		Query query = entityManager.createQuery("select pre from Preference pre where pre.id.user.emailaddress=?1");
+		query.setParameter(1, emailaddress);
 		List<Preference> result = query.getResultList();
 		return result; 
 	}
