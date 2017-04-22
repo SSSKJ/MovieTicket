@@ -9,21 +9,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="user")
-public class User implements Serializable {                            //定义user表，内含用户基本信息，如注册用的邮箱（主键）， 密码，用户名，电话号码
+public class User implements Serializable {                            
 	
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="emailaddress", nullable=false)                       //定义属性名称并声明属性不能为空，注册时一定要提供
-	@Id                                                                //声明为主键
+	@Column(name="emailaddress", nullable=false)                       
+	@Id                                                                
 	private String emailaddress;
 	
-	@Column(name="password", nullable=false)                           //定义属性名称并声明属性不能为空，注册时一定要提供
+	@Column(name="password", nullable=false)                           
 	private String password;
 	
-	@Column(name="nickname")                                           //定义属性名称，注册时可不提供
+	@Column(name="nickname")                                           
 	private String nickname;
 	
-	@Column(name="phone")                                              //定义属性名称，注册时可不提供
+	@Column(name="phone")                                              
 	private String phone;
 	
 	public User(){}
@@ -31,7 +31,7 @@ public class User implements Serializable {                            //定义use
 	public User(String emailaddress, String password) {
 		this.emailaddress = emailaddress;
 		this.password = password;
-		this.nickname = emailaddress;                                   //注册时若未提供相应的用户名则默认为注册时邮箱
+		this.nickname = emailaddress;                                  
 	}
 	
 	public String getEmailaddress() {
@@ -66,7 +66,7 @@ public class User implements Serializable {                            //定义use
 		this.phone = phone;
 	}
 	
-	@Override                                                           //自动生成toString函数
+	@Override                                                           
 	public String toString() {
 		return "User [emailaddress=" + emailaddress + ", password=" + password + ", nickname=" + nickname + ", phone="
 				+ phone + "]";

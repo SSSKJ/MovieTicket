@@ -2,6 +2,7 @@ package systemanalysis.movieticket.persistence.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
@@ -14,7 +15,7 @@ public class PreferenceId implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@JoinColumn(name="emailaddress", nullable=false)
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=(CascadeType.ALL))
 	private User user;
 	
 	@Column(name="preference", columnDefinition = "")
@@ -28,15 +29,8 @@ public class PreferenceId implements Serializable {
 		return user;
 	}
 	
-	public void setPreference(String[] preference) {
-		if (this.preference == null)
-			this.preference = "";
-		for(String p:preference) {
-			if (this.preference == "")
-				this.preference = p;
-			else
-				this.preference = this.preference + ";" + p;
-		}
+	public void setPreference(String preference) {
+		this.preference = preference;
 	}
 	
 	public String getPreference() {

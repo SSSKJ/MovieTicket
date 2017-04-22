@@ -2,6 +2,7 @@ package systemanalysis.movieticket.persistence.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
@@ -14,7 +15,7 @@ public class SeatInOrderId implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@JoinColumn(name="orderid", nullable=false)
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=(CascadeType.ALL))
 	private OrderForm orderform;
 	
 	@Column(name="row", nullable=false)

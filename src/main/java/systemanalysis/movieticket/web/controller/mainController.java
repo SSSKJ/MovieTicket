@@ -5,21 +5,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import systemanalysis.movieticket.persistence.service.UserService;
+import systemanalysis.movieticket.persistence.service.MainService;
 
 @Controller
-public class mainController {
+public class MainController {
 	
 	@Autowired
-	private UserService service;
+	private MainService service;
 	
 	@RequestMapping("/")
 	public String home() {
 		return "index";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/signin")
-	public void signin(String username, String password) {
+	@RequestMapping(method = RequestMethod.POST, value = "/Register")
+	public void register(String emailaddress, String password) {
+		
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/Login")
+	public void Login(String emailaddress, String password) {
+		
+	}
+	
+	@RequestMapping("/getOrderForms")
+	public void getOrderForms() {
 		
 	}
 }

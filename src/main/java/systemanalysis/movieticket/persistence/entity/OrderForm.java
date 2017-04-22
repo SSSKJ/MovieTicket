@@ -5,9 +5,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,10 +25,11 @@ public class OrderForm implements Serializable {
 	
 	@Column(name="oid", nullable=false)
 	@Id
+	@GeneratedValue
 	private int oid;
 	
 	@JoinColumn(name="emailaddress", nullable=false)
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=(CascadeType.ALL))
 	private User user;
 	
 	@Column(name="date", nullable=false)

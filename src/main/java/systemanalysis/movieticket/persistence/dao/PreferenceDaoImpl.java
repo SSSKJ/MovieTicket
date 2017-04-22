@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Query;
 
 import systemanalysis.movieticket.persistence.entity.Preference;
+import systemanalysis.movieticket.persistence.entity.PreferenceId;
 
 public class PreferenceDaoImpl extends AbstractJpaDAO<Preference> implements PreferenceDao {
 	
@@ -13,17 +14,18 @@ public class PreferenceDaoImpl extends AbstractJpaDAO<Preference> implements Pre
 		setClazz(Preference.class);
 	}
 	
-	public Preference findOne(final String emailaddress) {
-        return entityManager.find(Preference.class, emailaddress);
+	public Preference findOne(final PreferenceId id) {
+        return entityManager.find(Preference.class, id);
     }
 	
-	public void deleteById(final String entityemailaddress) {
-		final Preference entity = findOne(entityemailaddress);
+	public void deleteById(final PreferenceId id) {
+		final Preference entity = findOne(id);
 		delete(entity);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Preference> searchAllRelevant(String emailaddress) {
-		Query query = entityManager.createQuery("selete * from Preference where emailaddress = " + emailaddress);
+		Query query = entityManager.createQuery("selete * from preference where emailaddress = " + emailaddress);
 		List<Preference> result = query.getResultList();
 		return result; 
 	}

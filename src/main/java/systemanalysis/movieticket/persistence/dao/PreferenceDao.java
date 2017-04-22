@@ -3,10 +3,11 @@ package systemanalysis.movieticket.persistence.dao;
 import java.util.List;
 
 import systemanalysis.movieticket.persistence.entity.Preference;
+import systemanalysis.movieticket.persistence.entity.PreferenceId;
 
 public interface PreferenceDao {
 	
-	Preference findOne(String emailaddress);
+	Preference findOne(PreferenceId id);
 
     List<Preference> findAll();
 
@@ -16,10 +17,9 @@ public interface PreferenceDao {
 
     void delete(Preference entity);
 
-    void deleteById(String entityemailaddress);
+    void deleteById(PreferenceId id);
     
     //Search all relevant preference by emailaddress and return in type List<Preference>
     List<Preference> searchAllRelevant(String emailaddress);
-    //Delete all relevant preference by emailaddress
     
 }

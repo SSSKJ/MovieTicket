@@ -6,11 +6,10 @@ import systemanalysis.movieticket.persistence.entity.OrderForm;
 
 public interface OrderFormDao {
 	
-	//Search order by emailaddress
+	//Search all relevant order by emailaddress
 	List<OrderForm> searchAllRelevant(String emailaddress);
-	//Delete orderform by oid
-	//Delete all relevant orderform by emailaddress
-	OrderForm findOne(String emailaddress);
+	
+	OrderForm findOne(int oid);
 	
 	List<OrderForm> findAll();
 	
@@ -19,7 +18,8 @@ public interface OrderFormDao {
     OrderForm update(OrderForm entity);
 
     void delete(OrderForm entity);
-
-    void deleteById(OrderForm entityemailaddress);
+    
+    //Delete orderform by oid
+    void deleteById(int oid);
     
 }
