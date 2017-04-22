@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.Preference;
 import systemanalysis.movieticket.persistence.entity.PreferenceId;
 
+@Repository
 public class PreferenceDaoImpl extends AbstractJpaDAO<Preference> implements PreferenceDao {
 	
 	public PreferenceDaoImpl() {

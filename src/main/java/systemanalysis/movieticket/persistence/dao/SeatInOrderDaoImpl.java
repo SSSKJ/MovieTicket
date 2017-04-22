@@ -3,9 +3,13 @@ package systemanalysis.movieticket.persistence.dao;
 import java.util.List;
 
 import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.SeatInOrder;
 import systemanalysis.movieticket.persistence.entity.SeatInOrderId;
 
+@Repository
 public class SeatInOrderDaoImpl extends AbstractJpaDAO<SeatInOrder> implements SeatInOrderDao {
 	
 	public SeatInOrderDaoImpl() {

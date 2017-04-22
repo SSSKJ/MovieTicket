@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.OrderForm;
 
+@Repository
 public class OrderFormDaoImpl extends AbstractJpaDAO<OrderForm> implements OrderFormDao {
 	
 	public OrderFormDaoImpl() {
