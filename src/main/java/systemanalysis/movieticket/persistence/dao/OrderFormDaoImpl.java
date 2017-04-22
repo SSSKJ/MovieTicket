@@ -26,7 +26,7 @@ public class OrderFormDaoImpl extends AbstractJpaDAO<OrderForm> implements Order
 
 	@SuppressWarnings("unchecked")
 	public List<OrderForm> searchAllRelevant(String emailaddress) {
-		Query query = entityManager.createQuery("selete * from orderform where emailaddress = " + emailaddress);
+		Query query = entityManager.createQuery("select * from orderform where emailaddress = " + emailaddress);
 		List<OrderForm> result = query.getResultList();
 		
 		return result;
