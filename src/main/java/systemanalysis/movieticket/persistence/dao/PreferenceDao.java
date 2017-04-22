@@ -19,6 +19,7 @@ public interface PreferenceDao {
     void deleteById(String entityemailaddress);
     
     //Search all relevant preference by emailaddress and return in type List<Preference>
+    List<Preference> searchAllRelevant(String emailaddress);
     //Delete all relevant preference by emailaddress
     
 }
