@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.Preference;
 import systemanalysis.movieticket.persistence.entity.PreferenceId;
 
+@Repository
 public class PreferenceDaoImpl extends AbstractJpaDAO<Preference> implements PreferenceDao {
 	
 	public PreferenceDaoImpl() {
@@ -25,7 +28,8 @@ public class PreferenceDaoImpl extends AbstractJpaDAO<Preference> implements Pre
 	
 	@SuppressWarnings("unchecked")
 	public List<Preference> searchAllRelevant(String emailaddress) {
-		Query query = entityManager.createQuery("selete * from preference where emailaddress = " + emailaddress);
+		Query query = entityManager.createQuery("select pre from Preference pre where pre.id.user.emailaddress=?1");
+		query.setParameter(1, emailaddress);
 		List<Preference> result = query.getResultList();
 		return result; 
 	}

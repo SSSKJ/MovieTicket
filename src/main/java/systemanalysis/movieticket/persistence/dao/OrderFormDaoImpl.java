@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.OrderForm;
 
+@Repository
 public class OrderFormDaoImpl extends AbstractJpaDAO<OrderForm> implements OrderFormDao {
 	
 	public OrderFormDaoImpl() {
@@ -26,7 +29,8 @@ public class OrderFormDaoImpl extends AbstractJpaDAO<OrderForm> implements Order
 
 	@SuppressWarnings("unchecked")
 	public List<OrderForm> searchAllRelevant(String emailaddress) {
-		Query query = entityManager.createQuery("selete * from orderform where emailaddress = " + emailaddress);
+		Query query = entityManager.createQuery("select o from OrderForm o where o.user.emailaddress=?1");
+		query.setParameter(1, emailaddress);
 		List<OrderForm> result = query.getResultList();
 		
 		return result;
