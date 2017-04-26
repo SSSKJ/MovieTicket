@@ -61,10 +61,10 @@ public class MainService {
 	public void setPreference(String emailaddress, String[] preference) {
 		if (!check(emailaddress)) return;
 		User user = userdao.findOne(emailaddress);
-		Preference p = new Preference();
-		PreferenceId pid = new PreferenceId();
-		pid.SetUser(user);
 		for (String prefer:preference) {
+			Preference p = new Preference();
+			PreferenceId pid = new PreferenceId();
+			pid.SetUser(user);
 			pid.setPreference(prefer);
 			if (pdao.findOne(pid) == null) {
 				p.setPreferenceId(pid);
@@ -72,7 +72,7 @@ public class MainService {
 				user.getP().add(p);
 			}
 		}
-		userdao.update(user); // mark
+		//userdao.update(user); // mark
 	}
 	
 	public void modifyNickname(String emailaddress, String nickname) {
@@ -97,19 +97,28 @@ public class MainService {
 	}
 	
 	public void deletePreference(String emailaddress, String[] preference) {
+		if (!check(emailaddress)) return;
 		User user = userdao.findOne(emailaddress);
-		if (user != null) {
-			Preference p = new Preference();
+		for (String prefer:preference) {
 			PreferenceId pid = new PreferenceId();
 			pid.SetUser(user);
-			for (String prefer:preference) {
-				pid.setPreference(prefer);
-				if (pdao.findOne(pid) != null) {
-					p.setPreferenceId(pid);
-					pdao.delete(p);
-				}
-			}
+			pid.setPreference(prefer);
+			Preference p = pdao.findOne(pid);
+			if (p != null)
+				pdao.delete(p);
 		}
+	}
+	
+	public boolean getOnePreference(String emailaddress, String preference) {
+		if (!check(emailaddress)) return false;
+		User user = userdao.findOne(emailaddress);
+		Preference p = new Preference();
+		PreferenceId pid = new PreferenceId();
+		pid.SetUser(user);
+		pid.setPreference(preference);
+		if (pdao.findOne(pid) != null)
+			return true;
+		return false;
 	}
 	
 	public void addOrderForm() {}

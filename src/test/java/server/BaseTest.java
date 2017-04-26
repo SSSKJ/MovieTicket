@@ -28,7 +28,8 @@ public class BaseTest {
 	
 	@Before
 	public void init() {
-		
+		service.deleteUser("1");
+		service.deleteUser("3");
 	}
 	
 	@Test
@@ -48,7 +49,7 @@ public class BaseTest {
 		 */
 		List<Preference> preferences = service.getPreference("1");
 		Assert.assertEquals(2, preferences.size());
-		preferences = service.getPreference("2");
+		preferences = service.getPreference("1");
 		Assert.assertEquals("action", preferences.get(0).getPreferenceId().getPreference());
 		
 		//---------------end of test of preference search function-------- 
@@ -64,7 +65,11 @@ public class BaseTest {
 //		Assert.assertEquals("true", notExist);
 		//--------end of----------------------------
 		
-		service.deleteUser("1");
+		//service.deleteUser("1");
+		String[] s = {"action"};
+		service.deletePreference("1", s);
+		Assert.assertEquals("love", preferences.get(0).getPreferenceId().getPreference());
+		Assert.assertEquals(false, service.getOnePreference("1", "action"));
 	}
 	
 	@Test
@@ -79,10 +84,10 @@ public class BaseTest {
 		//---------------end of test of delete--------
 	}
 	
-	@After
+	/*@After
 	public void afterTest () {
 		service.deleteUser("1");
 		service.deleteUser("3");
-	}
+	}*/
 	
 }
