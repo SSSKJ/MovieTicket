@@ -29,7 +29,7 @@ public class User implements Serializable {
 	@Column(name="phone")                                              
 	private String phone;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="preference")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
 	private List<Preference> p;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
