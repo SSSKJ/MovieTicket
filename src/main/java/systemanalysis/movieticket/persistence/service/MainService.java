@@ -39,9 +39,17 @@ public class MainService {
 			if (nickname != "")
 				user.setNickname(nickname);
 			user.setPhone(phone);
+			userdao.create(user);
 			return true;
 		}
 		return false;
+	}
+	
+	//This is just for test
+	public void deleteUser(String emailaddress) {
+		if (check(emailaddress)) {
+			userdao.deleteById(emailaddress);
+		}
 	}
 	
 	public boolean check(String emailaddress) {
@@ -51,6 +59,7 @@ public class MainService {
 	}
 	
 	public void setPreference(String emailaddress, String[] preference) {
+		if (!check(emailaddress)) return;
 		User user = userdao.findOne(emailaddress);
 		Preference p = new Preference();
 		PreferenceId pid = new PreferenceId();
