@@ -15,7 +15,7 @@ public class PreferenceId implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@JoinColumn(name="emailaddress", nullable=false)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=(CascadeType.ALL))
+	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 	
 	@Column(name="preference", columnDefinition = "")

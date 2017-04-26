@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +31,7 @@ public class OrderForm implements Serializable {
 	private int oid;
 	
 	@JoinColumn(name="emailaddress", nullable=false)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=(CascadeType.ALL))
+	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
 	
 	@Column(name="date", nullable=false)
@@ -55,6 +57,17 @@ public class OrderForm implements Serializable {
 	@Column(name="screeningroom", nullable=false)
 	private String screeningroom;
 	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="orderform")
+	private List<SeatInOrder> s;
+	
+	public List<SeatInOrder> getS() {
+		return s;
+	}
+
+	public void setS(List<SeatInOrder> s) {
+		this.s = s;
+	}
+
 	public OrderForm(){}
 	
 	public void setOid(int oid) {

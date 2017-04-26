@@ -15,7 +15,7 @@ public class SeatInOrderId implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@JoinColumn(name="orderid", nullable=false)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=(CascadeType.ALL))
+	@ManyToOne(fetch=FetchType.LAZY)
 	private OrderForm orderform;
 	
 	@Column(name="row", nullable=false)

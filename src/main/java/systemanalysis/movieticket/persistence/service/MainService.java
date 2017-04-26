@@ -44,6 +44,12 @@ public class MainService {
 		return false;
 	}
 	
+	public boolean check(String emailaddress) {
+		if (userdao.findOne(emailaddress) == null)
+			return false;
+		else return true;
+	}
+	
 	public void setPreference(String emailaddress, String[] preference) {
 		User user = userdao.findOne(emailaddress);
 		Preference p = new Preference();
@@ -54,8 +60,10 @@ public class MainService {
 			if (pdao.findOne(pid) == null) {
 				p.setPreferenceId(pid);
 				pdao.create(p);
+				user.getP().add(p);
 			}
 		}
+		userdao.update(user); // mark
 	}
 	
 	public void modifyNickname(String emailaddress, String nickname) {
@@ -66,11 +74,13 @@ public class MainService {
 		}
 	}
 	
-	public boolean Login(String emailaddress, String password) {
+	public int Login(String emailaddress, String password) {
 		User user = userdao.findOne(emailaddress);
-		if (user != null && user.getPassword() == password)
-			return true;
-		return false;
+		if (user == null)
+			return 0;
+		else if (user.getPassword() != password)
+			return 1;
+		return 2;
 	}
 	
 	public List<Preference> getPreference(String emailaddress) {

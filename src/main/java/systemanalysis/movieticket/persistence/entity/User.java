@@ -1,10 +1,13 @@
 package systemanalysis.movieticket.persistence.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +29,28 @@ public class User implements Serializable {
 	@Column(name="phone")                                              
 	private String phone;
 	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="preference")
+	private List<Preference> p;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
+	private List<OrderForm> o;
+	
+	public List<OrderForm> getO() {
+		return o;
+	}
+
+	public void setO(List<OrderForm> o) {
+		this.o = o;
+	}
+
+	public List<Preference> getP() {
+		return p;
+	}
+
+	public void setP(List<Preference> p) {
+		this.p = p;
+	}
+
 	public User(){}
 	
 	public User(String emailaddress, String password) {
