@@ -1,6 +1,7 @@
 package systemanalysis.movieticket.persistence.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import javassist.expr.NewArray;
 
 @Entity
 @Table(name="user")
@@ -29,11 +32,11 @@ public class User implements Serializable {
 	@Column(name="phone")                                              
 	private String phone;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
-	private List<Preference> p;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.user")
+	private List<Preference> p = new ArrayList<Preference>();
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
-	private List<OrderForm> o;
+	private List<OrderForm> o = new ArrayList<OrderForm>();
 	
 	public List<OrderForm> getO() {
 		return o;

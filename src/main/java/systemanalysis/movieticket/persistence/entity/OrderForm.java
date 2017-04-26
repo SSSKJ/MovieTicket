@@ -3,6 +3,7 @@ package systemanalysis.movieticket.persistence.entity;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import javassist.expr.NewArray;
 
 @Entity
 @Table(name="orderform")
@@ -57,8 +60,8 @@ public class OrderForm implements Serializable {
 	@Column(name="screeningroom", nullable=false)
 	private String screeningroom;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="orderform")
-	private List<SeatInOrder> s;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.orderform")
+	private List<SeatInOrder> s = new ArrayList<SeatInOrder>();
 	
 	public List<SeatInOrder> getS() {
 		return s;
