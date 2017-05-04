@@ -17,11 +17,19 @@
     <context:component-scan base-package="systemanalysis.movieticket"/>
     <context:property-placeholder location="classpath:persistence-mysql.properties"/>    
     <mvc:annotation-driven/>
+    <mvc:default-servlet-handler />
     
     <mvc:resources mapping="/static/css/**" location="/static/css/" />
     <mvc:resources mapping="/static/img/**" location="/static/img/" />
     <mvc:resources mapping="/static/js/**" location="/static/js/" />
     
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/user/**"/>
+    		<bean class="systemanalysis.movieticket.interceptor.LoginInterceptor"/>
+    	</mvc:interceptor>    
+    </mvc:interceptors>
+
     <!-- SpringResourceTemplateResolver automatically integrates with Spring's own -->
 	<!-- resource resolution infrastructure, which is highly recommended.          -->
 	<bean id="templateResolver"

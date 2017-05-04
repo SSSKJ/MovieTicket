@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import systemanalysis.movieticket.persistence.entity.OrderForm;
 import systemanalysis.movieticket.persistence.entity.Preference;
 import systemanalysis.movieticket.persistence.entity.SeatInOrder;
-import systemanalysis.movieticket.persistence.service.MainService;
+import systemanalysis.movieticket.persistence.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -24,7 +24,7 @@ import systemanalysis.movieticket.persistence.service.MainService;
 public class BaseTest {
 	
 	@Autowired
-	private MainService service;
+	private UserService service;
 	
 	@Before
 	public void init() {

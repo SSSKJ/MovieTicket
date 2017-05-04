@@ -34,5 +34,4 @@ public class PreferenceDaoImpl extends AbstractJpaDAO<Preference> implements Pre
 		return result; 
 	}
 	
-	
 }
