@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import javassist.expr.NewArray;
-
 @Entity
 @Table(name="user")
 public class User implements Serializable {                            

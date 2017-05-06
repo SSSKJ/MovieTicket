@@ -2,7 +2,6 @@ package server;
 
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,11 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.bind.annotation.InitBinder;
 
-import systemanalysis.movieticket.persistence.entity.OrderForm;
 import systemanalysis.movieticket.persistence.entity.Preference;
-import systemanalysis.movieticket.persistence.entity.SeatInOrder;
 import systemanalysis.movieticket.persistence.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -36,7 +32,7 @@ public class BaseTest {
 	public void testSearch() {
 		//----------generate test data------------------
 		
-		service.Register("1", "123", "222", "1232");//create an account
+		//service.Register("1", "123", "222", "1232");//create an account
 		String[] pre = {"action", "love"};
 		service.setPreference("1", pre);//add preference
 				
@@ -75,7 +71,7 @@ public class BaseTest {
 	@Test
 	public void testDelete() {
 		//---------------test delete cascade-------------------
-		service.Register("3", "123", "22", "1232");
+		//service.Register("3", "123", "22", "1232");
 		String[] pre = {"action", "love", "adv"};
 		service.setPreference("3", pre);
 		Assert.assertEquals(3, service.getPreference("3").size());
