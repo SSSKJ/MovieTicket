@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -19,7 +20,8 @@ public class Film  implements Serializable{
 	
 	@Column(name="fid", nullable=false)
 	@Id
-	private String fid;
+	@GeneratedValue
+	private int fid;
 	
 	@Column(name="fname", nullable=false)
 	private String fname;
@@ -55,7 +57,10 @@ public class Film  implements Serializable{
 	private List<Director> d = new ArrayList<Director>();
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.film")
-	private List<Language> l = new ArrayList<Language>();
+	private List<ScreenRoom> l = new ArrayList<ScreenRoom>();
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="film")
+	private List<PlayList> playLists =  new ArrayList<PlayList>();
 	
 	
 	public List<Actor> getA() {
@@ -90,17 +95,17 @@ public class Film  implements Serializable{
 		this.d = d;
 	}
 
-	public List<Language> getL() {
+	public List<ScreenRoom> getL() {
 		return l;
 	}
 
-	public void setL(List<Language> l) {
+	public void setL(List<ScreenRoom> l) {
 		this.l = l;
 	}
 
 	public Film() {}
 	
-	public Film(String fid, String fname, String introduction, String length, String score, String area,
+	public Film(int fid, String fname, String introduction, String length, String score, String area,
 			String premiereDate, String posterURL) {
 		this.fid = fid;
 		this.fname = fname;
@@ -114,11 +119,11 @@ public class Film  implements Serializable{
 
 
 
-	public String getFid() {
+	public int getFid() {
 		return fid;
 	}
 
-	public void setFid(String fid) {
+	public void setFid(int fid) {
 		this.fid = fid;
 	}
 
