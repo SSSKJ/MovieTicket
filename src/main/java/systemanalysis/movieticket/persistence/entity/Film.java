@@ -117,6 +117,14 @@ public class Film  implements Serializable{
 		return cinemas;
 	}
 
+	public List<PlayList> getPlayLists() {
+		return playLists;
+	}
+
+	public void setPlayLists(List<PlayList> playLists) {
+		this.playLists = playLists;
+	}
+
 	public void setCinemas(List<Cinema> cinemas) {
 		this.cinemas = cinemas;
 	}

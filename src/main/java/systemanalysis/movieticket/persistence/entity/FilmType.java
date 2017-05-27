@@ -33,6 +33,10 @@ public class FilmType implements Serializable {
 	public int getId() {
 		return ftid;
 	}
+	
+	public void setId(int ftid) {
+		this.ftid = ftid;
+	}
 
 	public List<Film> getFilms() {
 		return films;

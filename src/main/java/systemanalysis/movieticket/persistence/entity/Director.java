@@ -53,6 +53,10 @@ public class Director implements Serializable {
 		return did;
 	}
 	
+	public void setId(int did) {
+		this.did = did;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

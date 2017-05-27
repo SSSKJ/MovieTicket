@@ -83,37 +83,4 @@ public class UserController {
 		//check password format
 		userservice.modifyPassword(email, password);
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/getorderforms")
-	public void getOrderForms(HttpSession session, HttpServletResponse response) throws IOException {
-		String email = session.getAttribute("email").toString();
-		List<OrderForm> orderforms = userservice.getOrderForms(email);
-		JSONArray ja = new JSONArray();
-		JSONObject j;
-		for (OrderForm o:orderforms) {
-			j = new JSONObject();
-			j.put("oid", o.getOid());
-			j.put("date", o.getDate());
-			j.put("moviename", o.getMoviename());
-			j.put("movietime", o.getMovietime());
-			j.put("cinema", o.getCinema());
-			j.put("ticketamount", o.getTicketamount());
-			j.put("price", o.getPrice());
-			j.put("screeningroom", o.getScreeningroom());
-			ja.add(j);
-		}
-		response.getWriter().write(ja.toString());
-	}
-	
-	@RequestMapping(method = RequestMethod.POST, value = "/addorderform")
-	public void addOrderForm(String date, String moviename, String movietime, String cinema, int ticketamount, float  price, String screeningroom, int[][] seats, HttpSession session, HttpServletResponse response) {
-		String email = session.getAttribute("email").toString();
-		if (!userservice.addOrderForm(email, date, moviename, movietime, cinema, ticketamount, price, screeningroom, seats))
-			response.setStatus(1);//set status code
-	}
-	
-	@RequestMapping(method = RequestMethod.POST, value = "/deleteorderform")
-	public void deleteOrderForm(int oid) {
-		userservice.deleteOrderForm(oid);
-	}
 }

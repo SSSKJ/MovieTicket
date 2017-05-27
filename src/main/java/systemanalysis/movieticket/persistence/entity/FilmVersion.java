@@ -50,6 +50,10 @@ public class FilmVersion implements Serializable {
 	public int getId() {
 		return fvid;
 	}
+	
+	public void setId(int fvid) {
+		this.fvid = fvid;
+	}
 
 	@Override
 	public int hashCode() {

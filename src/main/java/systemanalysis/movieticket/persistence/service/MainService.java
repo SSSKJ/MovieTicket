@@ -1,6 +1,8 @@
 package systemanalysis.movieticket.persistence.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import systemanalysis.movieticket.persistence.dao.OrderFormDao;
 import systemanalysis.movieticket.persistence.dao.PreferenceDao;
@@ -8,6 +10,8 @@ import systemanalysis.movieticket.persistence.dao.SeatInOrderDao;
 import systemanalysis.movieticket.persistence.dao.UserDao;
 import systemanalysis.movieticket.persistence.entity.User;
 
+@Service
+@Transactional
 public class MainService {
 	
 	@Autowired

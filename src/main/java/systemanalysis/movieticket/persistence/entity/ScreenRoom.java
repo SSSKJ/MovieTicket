@@ -36,6 +36,14 @@ public class ScreenRoom implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="sRoom")
 	private List<PlayList> playLists = new ArrayList<PlayList>();
 
+	public List<PlayList> getPlayLists() {
+		return playLists;
+	}
+
+	public void setPlayLists(List<PlayList> playLists) {
+		this.playLists = playLists;
+	}
+
 	public Cinema getCinema() {
 		return cinema;
 	}

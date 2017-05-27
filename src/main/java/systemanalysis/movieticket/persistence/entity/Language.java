@@ -47,6 +47,10 @@ public class Language implements Serializable {
 	public int getId() {
 		return lid;
 	}
+	
+	public void setId(int lid) {
+		this.lid = lid;
+	}
 
 	@Override
 	public int hashCode() {
