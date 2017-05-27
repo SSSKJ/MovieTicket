@@ -1,5 +1,6 @@
 package systemanalysis.movieticket.persistence.entity;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -38,6 +40,28 @@ public class Cinema implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.cinema")
 	private List<ScreenRoom> sRooms = new ArrayList<ScreenRoom>();
 	
+	@ManyToMany(mappedBy="cinemas")
+	private List<Film> films = new ArrayList<Film>();
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.cinema")
+	private List<PlayList> playLists = new ArrayList<PlayList>();
+	
+	public List<PlayList> getPlayLists() {
+		return playLists;
+	}
+
+	public void setPlayLists(List<PlayList> playLists) {
+		this.playLists = playLists;
+	}
+
+	public List<Film> getFilms() {
+		return films;
+	}
+
+	public void setFilms(List<Film> films) {
+		this.films = films;
+	}
+
 	public List<ScreenRoom> getsRooms() {
 		return sRooms;
 	}

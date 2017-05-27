@@ -9,8 +9,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import javassist.expr.NewArray;
 
 @Entity
 @Table(name="film")
@@ -62,7 +67,25 @@ public class Film  implements Serializable{
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="film")
 	private List<PlayList> playLists =  new ArrayList<PlayList>();
 	
+	@ManyToMany(cascade={CascadeType.PERSIST,CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinTable(name="film_cinema",
+				joinColumns={
+						@JoinColumn(name="fid", referencedColumnName="fid")
+				},
+				inverseJoinColumns={
+						@JoinColumn(name="cid", referencedColumnName="cid")
+				})
+	private List<Cinema> cinemas = new ArrayList<Cinema>();
 	
+	
+	public List<Cinema> getCinemas() {
+		return cinemas;
+	}
+
+	public void setCinemas(List<Cinema> cinemas) {
+		this.cinemas = cinemas;
+	}
+
 	public List<Actor> getA() {
 		return a;
 	}
