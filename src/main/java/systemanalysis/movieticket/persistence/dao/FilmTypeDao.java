@@ -3,10 +3,10 @@ package systemanalysis.movieticket.persistence.dao;
 import java.util.List;
 
 import systemanalysis.movieticket.persistence.entity.FilmType;
-import systemanalysis.movieticket.persistence.entity.Film;
 
 public interface FilmTypeDao {
-	List<Film> searchAllRelevant(String filmtype);
+	
+	List<FilmType> searchAllRelevantFilmType(int fid);
 	
 	//FilmType findOne(FilmTypeId aid);
 	

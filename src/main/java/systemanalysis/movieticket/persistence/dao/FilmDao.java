@@ -2,30 +2,27 @@ package systemanalysis.movieticket.persistence.dao;
 
 import java.util.List;
 
-import systemanalysis.movieticket.persistence.entity.Actor;
-import systemanalysis.movieticket.persistence.entity.Director;
 import systemanalysis.movieticket.persistence.entity.Film;
-import systemanalysis.movieticket.persistence.entity.FilmType;
-import systemanalysis.movieticket.persistence.entity.FilmVersion;
-import systemanalysis.movieticket.persistence.entity.Language;
-import systemanalysis.movieticket.persistence.entity.Cinema;
 
 public interface FilmDao {
-	List<Actor> searchAllRelevantActor(int fid);
 	
-	List<Director> searchAllRelevantDirector(int fid);
+	List<Film> searchByActor(int aid);
 	
-	List<FilmType> searchAllRelevantFilmType(int fid);
+	List<Film> searchByDirector(int did);
 	
-	List<FilmVersion> searchAllRelevantFilmVersion(int fid);
+	List<Film> searchByFilmType(int ftid);
 	
-	List<Language> searchAllRelevantLanguage(int fid);
+	List<Film> searchByFilmVersion(int fvid);
 	
-	List<Cinema> searchAllRelevantCinema(int fid);
+	List<Film> searchByLanguage(int lid);
+	
+	List<Film> searchByCinema(int cid);
 	
 	List<Film> searchByArea(String area);
 	
 	Film findOne(int fid);
+	
+	Film findOne(String fname);
 	
 	List<Film> findAll();
 	

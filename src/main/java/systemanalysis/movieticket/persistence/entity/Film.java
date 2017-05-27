@@ -9,8 +9,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import javassist.expr.NewArray;
 
 @Entity
 @Table(name="film")
@@ -44,25 +49,78 @@ public class Film  implements Serializable{
 	@Column(name="posterURL", nullable=false)
 	private String posterURL;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.film")
+	@ManyToMany(cascade={CascadeType.ALL,CascadeType.ALL,CascadeType.MERGE})
+	@JoinTable(name="film_actor",
+				joinColumns={
+						@JoinColumn(name="fid", referencedColumnName="fid")
+				},
+				inverseJoinColumns={
+						@JoinColumn(name="aid", referencedColumnName="aid")
+				})
 	private List<Actor> a = new ArrayList<Actor>();
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.film")
+	@ManyToMany(cascade={CascadeType.ALL,CascadeType.ALL,CascadeType.MERGE})
+	@JoinTable(name="film_filmversion",
+				joinColumns={
+						@JoinColumn(name="fid", referencedColumnName="fid")
+				},
+				inverseJoinColumns={
+						@JoinColumn(name="fvid", referencedColumnName="fvid")
+				})
 	private List<FilmVersion> fv = new ArrayList<FilmVersion>();
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.film")
+	@ManyToMany(cascade={CascadeType.ALL,CascadeType.ALL,CascadeType.MERGE})
+	@JoinTable(name="film_filmtype",
+				joinColumns={
+						@JoinColumn(name="fid", referencedColumnName="fid")
+				},
+				inverseJoinColumns={
+						@JoinColumn(name="ftid", referencedColumnName="ftid")
+				})
 	private List<FilmType> ft = new ArrayList<FilmType>();
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.film")
+	@ManyToMany(cascade={CascadeType.ALL,CascadeType.ALL,CascadeType.MERGE})
+	@JoinTable(name="film_director",
+				joinColumns={
+						@JoinColumn(name="fid", referencedColumnName="fid")
+				},
+				inverseJoinColumns={
+						@JoinColumn(name="did", referencedColumnName="did")
+				})
 	private List<Director> d = new ArrayList<Director>();
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.film")
-	private List<ScreenRoom> l = new ArrayList<ScreenRoom>();
+	@ManyToMany(cascade={CascadeType.ALL,CascadeType.ALL,CascadeType.MERGE})
+	@JoinTable(name="film_language",
+				joinColumns={
+						@JoinColumn(name="fid", referencedColumnName="fid")
+				},
+				inverseJoinColumns={
+						@JoinColumn(name="lid", referencedColumnName="lid")
+				})
+	private List<Language> l = new ArrayList<Language>();
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="film")
 	private List<PlayList> playLists =  new ArrayList<PlayList>();
 	
+	@ManyToMany(cascade={CascadeType.PERSIST,CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinTable(name="film_cinema",
+				joinColumns={
+						@JoinColumn(name="fid", referencedColumnName="fid")
+				},
+				inverseJoinColumns={
+						@JoinColumn(name="cid", referencedColumnName="cid")
+				})
+	private List<Cinema> cinemas = new ArrayList<Cinema>();
 	
+	
+	public List<Cinema> getCinemas() {
+		return cinemas;
+	}
+
+	public void setCinemas(List<Cinema> cinemas) {
+		this.cinemas = cinemas;
+	}
+
 	public List<Actor> getA() {
 		return a;
 	}
@@ -95,11 +153,11 @@ public class Film  implements Serializable{
 		this.d = d;
 	}
 
-	public List<ScreenRoom> getL() {
+	public List<Language> getL() {
 		return l;
 	}
 
-	public void setL(List<ScreenRoom> l) {
+	public void setL(List<Language> l) {
 		this.l = l;
 	}
 

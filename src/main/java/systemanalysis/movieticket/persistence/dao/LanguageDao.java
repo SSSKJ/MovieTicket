@@ -3,11 +3,10 @@ package systemanalysis.movieticket.persistence.dao;
 import java.util.List;
 
 import systemanalysis.movieticket.persistence.entity.Language;
-import systemanalysis.movieticket.persistence.entity.Film;
 
 public interface LanguageDao {
 	
-	List<Film> searchAllRelevant(String language);
+	List<Language> searchAllRelevantLanguage(int fid);
 	
 	//Language findOne(LanguageId aid);
 	
