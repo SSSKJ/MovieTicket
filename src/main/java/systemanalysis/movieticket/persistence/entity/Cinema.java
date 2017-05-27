@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -20,6 +21,8 @@ import javassist.expr.NewArray;
 public class Cinema implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
+	
 	
 	@Column(name="cid", nullable=false)
 	@Id
@@ -40,7 +43,7 @@ public class Cinema implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.cinema")
 	private List<ScreenRoom> sRooms = new ArrayList<ScreenRoom>();
 	
-	@ManyToMany(mappedBy="cinemas")
+	@ManyToMany(mappedBy="cinemas", fetch=FetchType.LAZY)
 	private List<Film> films = new ArrayList<Film>();
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.cinema")
