@@ -3,12 +3,11 @@ package systemanalysis.movieticket.persistence.dao;
 import java.util.List;
 
 import systemanalysis.movieticket.persistence.entity.SeatChart;
-import systemanalysis.movieticket.persistence.entity.SeatChartId;
 
 public interface SeatChartDao {
-	List<SeatChart> searchAllRelevant(String plid);
+	List<SeatChart> searchAllRelevant(int plid);
 	
-	SeatChart findOne(SeatChartId sid);
+	SeatChart findOne(int scid);
 	
 	List<SeatChart> findAll();
 	

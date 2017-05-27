@@ -23,6 +23,7 @@ public class Director implements Serializable {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="did", nullable=false)
 	private int did;
 	
 	@ManyToMany(mappedBy="d", fetch=FetchType.LAZY)

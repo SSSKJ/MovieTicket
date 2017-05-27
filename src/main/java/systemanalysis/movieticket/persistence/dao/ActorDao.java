@@ -3,13 +3,10 @@ package systemanalysis.movieticket.persistence.dao;
 import java.util.List;
 
 import systemanalysis.movieticket.persistence.entity.Actor;
-import systemanalysis.movieticket.persistence.entity.ActorId;
-import systemanalysis.movieticket.persistence.entity.Film;
 
 public interface ActorDao {
 	
-	List<Film> searchAllRelevant(String aname);
-	
+	List<Actor> searchAllRelevantActor(int fid);
 	//Actor findOne(ActorId aid);
 	
 	List<Actor> findAll();

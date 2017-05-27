@@ -19,9 +19,9 @@ public class FilmVersion implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-
 	@Id
 	@GeneratedValue
+	@Column(name="fvid", nullable=false)
 	private int fvid;
 	
 	@ManyToMany(mappedBy="fv", fetch=FetchType.LAZY)

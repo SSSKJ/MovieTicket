@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,6 +20,7 @@ public class FilmType implements Serializable {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="ftid", nullable=false)
 	private int ftid;
 	
 

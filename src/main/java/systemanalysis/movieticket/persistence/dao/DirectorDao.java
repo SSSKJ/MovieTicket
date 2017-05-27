@@ -3,10 +3,9 @@ package systemanalysis.movieticket.persistence.dao;
 import java.util.List;
 
 import systemanalysis.movieticket.persistence.entity.Director;
-import systemanalysis.movieticket.persistence.entity.Film;
 
 public interface DirectorDao {
-	List<Film> searchAllRelevant(String dname);
+	List<Director> searchAllRelevantDirector(int fid);
 	
 	//Director findOne(DirectorId aid);
 	

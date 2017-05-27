@@ -7,9 +7,13 @@ import systemanalysis.movieticket.persistence.entity.Film;
 
 public interface CinemaDao {
 	
-	List<Film> searchAllRelevantFilm(String cid);
+	List<Cinema> searchByFilm(int fid);
 	
-	//Cinema findOne(CinemaId aid);
+	Cinema findOne(int cid);
+	
+	Cinema findOne(String cname);
+	
+	void deleteById(int cid);
 	
 	List<Cinema> findAll();
 	

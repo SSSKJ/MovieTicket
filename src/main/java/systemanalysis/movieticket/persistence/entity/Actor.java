@@ -20,6 +20,7 @@ public class Actor implements Serializable {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="aid", nullable=false)
 	private int aid;
 	
 	@ManyToMany(mappedBy="a", fetch=FetchType.LAZY)
@@ -48,6 +49,10 @@ public class Actor implements Serializable {
 	
 	public int getId() {
 		return aid;
+	}
+	
+	public void setId(int aid) {
+		this.aid = aid;
 	}
 	
 	@Override

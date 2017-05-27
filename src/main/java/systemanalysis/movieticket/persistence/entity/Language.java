@@ -19,6 +19,7 @@ public class Language implements Serializable {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="lid", nullable=false)
 	private int lid;
 	
 	@ManyToMany(mappedBy="l", fetch=FetchType.LAZY)

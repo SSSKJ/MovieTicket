@@ -1,6 +1,5 @@
 package systemanalysis.movieticket.persistence.entity;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +8,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import javassist.expr.NewArray;
 
 @Entity
 @Table(name="cinema")
@@ -22,11 +20,10 @@ public class Cinema implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	
-	
 	@Column(name="cid", nullable=false)
 	@Id
-	private String cid;
+	@GeneratedValue
+	private int cid;
 	
 	@Column(name="cname", nullable=false)
 	private String cname;
@@ -75,18 +72,18 @@ public class Cinema implements Serializable {
 
 	public Cinema() {}
 
-	public Cinema(String cid, String cname, String city, String town) {
+	public Cinema(int cid, String cname, String city, String town) {
 		this.cid = cid;
 		this.cname = cname;
 		this.city = city;
 		this.town = town;
 	}
 	
-	public String getCid() {
+	public int getCid() {
 		return cid;
 	}
 
-	public void setCid(String cid) {
+	public void setCid(int cid) {
 		this.cid = cid;
 	}
 

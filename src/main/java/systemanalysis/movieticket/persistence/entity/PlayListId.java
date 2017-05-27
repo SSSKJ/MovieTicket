@@ -11,12 +11,11 @@ import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.hibernate.engine.spi.CacheImplementor;
 
 
 @Embeddable
@@ -48,7 +47,14 @@ public class PlayListId implements Serializable {
 		this.cinema = cinema;
 	}
 
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.playList")
+	@ManyToMany(cascade={CascadeType.ALL,CascadeType.ALL,CascadeType.MERGE})
+	@JoinTable(name="playlist_seatchart",
+				joinColumns={
+						@JoinColumn(name="plid", referencedColumnName="plid")
+				},
+				inverseJoinColumns={
+						@JoinColumn(name="scid", referencedColumnName="scid")
+				})
 	private List<SeatChart> seatChart = new ArrayList<SeatChart>();
 	
 	@Column(name="playdate", nullable=false)
