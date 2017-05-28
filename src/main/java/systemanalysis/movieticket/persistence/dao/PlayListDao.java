@@ -3,15 +3,14 @@ package systemanalysis.movieticket.persistence.dao;
 import java.util.List;
 
 import systemanalysis.movieticket.persistence.entity.PlayList;
-import systemanalysis.movieticket.persistence.entity.PlayListId;
 
 public interface PlayListDao {
 	
 	List<PlayList> searchByCinemaAndFilm(int cid, int fid);
 	
-	PlayList findOne(PlayListId id);
+	PlayList findOne(int plid);
 	
-	void deleteById(PlayListId id);
+	void deleteById(int plid);
 	
 	List<PlayList> findAll();
 	

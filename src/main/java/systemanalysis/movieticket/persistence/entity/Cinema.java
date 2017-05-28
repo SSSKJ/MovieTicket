@@ -37,13 +37,13 @@ public class Cinema implements Serializable {
 	@Column(name="town", nullable=false)
 	private String town;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.cinema")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="cinema")
 	private List<ScreenRoom> sRooms = new ArrayList<ScreenRoom>();
 	
 	@ManyToMany(mappedBy="cinemas", fetch=FetchType.LAZY)
 	private List<Film> films = new ArrayList<Film>();
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.cinema")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="cinema")
 	private List<PlayList> playLists = new ArrayList<PlayList>();
 	
 	public List<PlayList> getPlayLists() {
