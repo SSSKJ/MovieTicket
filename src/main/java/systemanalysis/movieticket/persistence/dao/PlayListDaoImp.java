@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Query;
 
 import systemanalysis.movieticket.persistence.entity.PlayList;
-import systemanalysis.movieticket.persistence.entity.PlayListId;
 
 public class PlayListDaoImp extends AbstractJpaDAO<PlayList> implements PlayListDao{
 	
@@ -25,12 +24,12 @@ public class PlayListDaoImp extends AbstractJpaDAO<PlayList> implements PlayList
 		return result; 
 	}
 
-	public PlayList findOne(PlayListId id) {
-		return entityManager.find(PlayList.class, id);
+	public PlayList findOne(int plid) {
+		return entityManager.find(PlayList.class, plid);
 	}
 
-	public void deleteById(PlayListId id) {
-		final PlayList entity = findOne(id);
+	public void deleteById(int plid) {
+		final PlayList entity = findOne(plid);
 		delete(entity);	
 	}
 
