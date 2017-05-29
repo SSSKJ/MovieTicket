@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.Film;
 
+@Repository
 @SuppressWarnings("unchecked")
 public class FilmDaoImp extends AbstractJpaDAO<Film> implements FilmDao {
 	

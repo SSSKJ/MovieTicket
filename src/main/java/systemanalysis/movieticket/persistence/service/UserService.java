@@ -6,15 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import systemanalysis.movieticket.persistence.dao.OrderFormDao;
 import systemanalysis.movieticket.persistence.dao.PreferenceDao;
-import systemanalysis.movieticket.persistence.dao.SeatInOrderDao;
 import systemanalysis.movieticket.persistence.dao.UserDao;
-import systemanalysis.movieticket.persistence.entity.OrderForm;
 import systemanalysis.movieticket.persistence.entity.Preference;
 import systemanalysis.movieticket.persistence.entity.PreferenceId;
-import systemanalysis.movieticket.persistence.entity.SeatInOrder;
-import systemanalysis.movieticket.persistence.entity.SeatInOrderId;
 import systemanalysis.movieticket.persistence.entity.User;
 
 @Service
@@ -26,12 +21,6 @@ public class UserService {
 	
 	@Autowired
 	private PreferenceDao pdao;
-	
-	@Autowired
-	private OrderFormDao odao;
-	
-	@Autowired
-	private SeatInOrderDao sdao;
 	
 	public User getUser(String emailaddress) {
 		return userdao.findOne(emailaddress);
@@ -85,7 +74,6 @@ public class UserService {
 	
 	public void deleteAllPreference(String emailaddress) {
 		if (!check(emailaddress)) return;
-		User user = userdao.findOne(emailaddress);
 		List<Preference> preference = pdao.searchAllRelevant(emailaddress);
 		for (Preference p:preference)
 			pdao.delete(p);
@@ -94,7 +82,6 @@ public class UserService {
 	public boolean getOnePreference(String emailaddress, String preference) {
 		if (!check(emailaddress)) return false;
 		User user = userdao.findOne(emailaddress);
-		Preference p = new Preference();
 		PreferenceId pid = new PreferenceId();
 		pid.SetUser(user);
 		pid.setPreference(preference);

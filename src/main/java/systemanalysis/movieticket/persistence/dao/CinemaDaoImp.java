@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.Cinema; 
 
+@Repository
 public class CinemaDaoImp extends AbstractJpaDAO<Cinema> implements CinemaDao {
 	
 	public CinemaDaoImp() {
@@ -20,6 +23,17 @@ public class CinemaDaoImp extends AbstractJpaDAO<Cinema> implements CinemaDao {
 		Query query = entityManager.createQuery(queryString);
 				
 		query.setParameter(1, fid);
+		List<Cinema> result = query.getResultList();
+		return result;
+	}
+	
+	public List<Cinema> searchByLocation(String location) {
+		
+		String queryString = "select c from Cinema c where c.location=?1";
+		
+		Query query = entityManager.createQuery(queryString);
+				
+		query.setParameter(1, location);
 		List<Cinema> result = query.getResultList();
 		return result;
 	}

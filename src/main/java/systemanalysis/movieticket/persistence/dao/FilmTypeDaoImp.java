@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.Film;
 import systemanalysis.movieticket.persistence.entity.FilmType;
 
 //filmtype is like act,love,...ect
+@Repository
 public class FilmTypeDaoImp extends AbstractJpaDAO<FilmType> implements FilmTypeDao {
 	
 	public FilmTypeDaoImp() {

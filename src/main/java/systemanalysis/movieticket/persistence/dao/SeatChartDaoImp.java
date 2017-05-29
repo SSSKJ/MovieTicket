@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.SeatChart;
 
+@Repository
 public class SeatChartDaoImp extends AbstractJpaDAO<SeatChart> implements SeatChartDao {
 	
 	public SeatChartDaoImp() {

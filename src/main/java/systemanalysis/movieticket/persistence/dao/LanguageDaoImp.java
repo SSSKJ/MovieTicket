@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.Language;
 
+@Repository
 public class LanguageDaoImp extends AbstractJpaDAO<Language> implements LanguageDao {
 	
 	public LanguageDaoImp() {

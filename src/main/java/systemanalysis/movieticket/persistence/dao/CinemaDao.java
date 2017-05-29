@@ -9,6 +9,8 @@ public interface CinemaDao {
 	
 	List<Cinema> searchByFilm(int fid);
 	
+	List<Cinema> searchByLocation(String location);
+	
 	Cinema findOne(int cid);
 	
 	Cinema findOne(String cname);

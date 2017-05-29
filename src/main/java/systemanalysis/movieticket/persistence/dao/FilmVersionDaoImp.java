@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.Film;
 import systemanalysis.movieticket.persistence.entity.FilmVersion;
 
 //this is like 3D/2D/IMAX
+@Repository
 public class FilmVersionDaoImp extends AbstractJpaDAO<FilmVersion> implements FilmVersionDao{
 		
 	public  FilmVersionDaoImp() {

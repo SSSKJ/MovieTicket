@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.Actor;
 import systemanalysis.movieticket.persistence.entity.Film;
 
+@Repository
 public class ActorDaoImp extends AbstractJpaDAO<Actor> implements ActorDao {
 	
 	public ActorDaoImp() {

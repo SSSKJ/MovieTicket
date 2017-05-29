@@ -31,12 +31,23 @@ public class Cinema implements Serializable {
 	@Column(name="address")
 	private String address;
 	
-	@Column(name="city", nullable=false)
+	@Column(name="location")
+	private String location;
+	
+	/*@Column(name="city", nullable=false)
 	private String city;
 	
 	@Column(name="town", nullable=false)
-	private String town;
+	private String town;*/
 	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="cinema")
 	private List<ScreenRoom> sRooms = new ArrayList<ScreenRoom>();
 	
@@ -72,11 +83,13 @@ public class Cinema implements Serializable {
 
 	public Cinema() {}
 
-	public Cinema(int cid, String cname, String city, String town) {
+	public Cinema(int cid, String cname, String location, String address) {
 		this.cid = cid;
 		this.cname = cname;
-		this.city = city;
-		this.town = town;
+		//this.city = city;
+		//this.town = town;
+		this.location = location;
+		this.address = address;
 	}
 	
 	public int getCid() {
@@ -103,7 +116,7 @@ public class Cinema implements Serializable {
 		this.address = address;
 	}
 
-	public String getCity() {
+	/*public String getCity() {
 		return city;
 	}
 
@@ -117,13 +130,14 @@ public class Cinema implements Serializable {
 
 	public void setTown(String town) {
 		this.town = town;
-	}
+	}*/
 	
 	@Override                                                           
 	public String toString() {
 		return "Cinema [cid=" + cid + ", name=" + cname 
 				+ ", address=" + address 
-				+ ", city=" + city 
-				+ ", town=" + town + "]";
+				+ ", location=" + location;
+				//+ ", city=" + city 
+				//+ ", town=" + town + "]";
 	}
 }

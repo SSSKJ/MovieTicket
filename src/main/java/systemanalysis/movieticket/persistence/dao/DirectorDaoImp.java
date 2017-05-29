@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.Director;
 
+@Repository
 public class DirectorDaoImp extends AbstractJpaDAO<Director> implements DirectorDao {
 	
 	public DirectorDaoImp() {

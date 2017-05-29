@@ -38,7 +38,7 @@ public class Film  implements Serializable{
 	private String length;
 	
 	@Column(name="score", nullable=false)
-	private String score;//may should be an int???
+	private float score;//may should be an int???
 	
 	@Column(name="area", nullable=false)
 	private String area;
@@ -46,8 +46,8 @@ public class Film  implements Serializable{
 	@Column(name="premiereDate", nullable=false)
 	private String premiereDate;
 	
-	@Column(name="posterURL", nullable=false)
-	private String posterURL;
+	/*@Column(name="posterURL", nullable=false)
+	private String posterURL;*/
 	
 	@ManyToMany(cascade={CascadeType.ALL,CascadeType.ALL,CascadeType.MERGE})
 	@JoinTable(name="film_actor",
@@ -171,7 +171,7 @@ public class Film  implements Serializable{
 
 	public Film() {}
 	
-	public Film(int fid, String fname, String introduction, String length, String score, String area,
+	public Film(int fid, String fname, String introduction, String length, float score, String area,
 			String premiereDate, String posterURL) {
 		this.fid = fid;
 		this.fname = fname;
@@ -180,7 +180,7 @@ public class Film  implements Serializable{
 		this.score = score;
 		this.area = area;
 		this.premiereDate = premiereDate;
-		this.posterURL = posterURL;
+		//this.posterURL = posterURL;
 	}
 
 
@@ -217,11 +217,11 @@ public class Film  implements Serializable{
 		this.length = length;
 	}
 
-	public String getScore() {
+	public float getScore() {
 		return score;
 	}
 
-	public void setScore(String score) {
+	public void setScore(float score) {
 		this.score = score;
 	}
 
@@ -241,13 +241,13 @@ public class Film  implements Serializable{
 		this.premiereDate = premiereDate;
 	}
 
-	public String getPosterURL() {
+	/*public String getPosterURL() {
 		return posterURL;
 	}
 
 	public void setPosterURL(String posterURL) {
 		this.posterURL = posterURL;
-	}
+	}*/
 	
 	@Override                                                           
 	public String toString() {
@@ -256,7 +256,7 @@ public class Film  implements Serializable{
 				+ ", length=" + length 
 				+ ", scroe=" + score
 				+ ", area=" + area
-				+ ", posterURL=" +posterURL
+				//+ ", posterURL=" +posterURL
 				+ ", premiereDate=" + premiereDate
 				+ "]";
 	}

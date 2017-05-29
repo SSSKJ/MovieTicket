@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import systemanalysis.movieticket.persistence.entity.PlayList;
 
+@Repository
 public class PlayListDaoImp extends AbstractJpaDAO<PlayList> implements PlayListDao{
 	
 	public PlayListDaoImp() {
