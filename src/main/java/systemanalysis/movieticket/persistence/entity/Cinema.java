@@ -47,9 +47,6 @@ public class Cinema implements Serializable {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="cinema")
-	private List<ScreenRoom> sRooms = new ArrayList<ScreenRoom>();
 	
 	@ManyToMany(mappedBy="cinemas", fetch=FetchType.LAZY)
 	private List<Film> films = new ArrayList<Film>();
@@ -71,14 +68,6 @@ public class Cinema implements Serializable {
 
 	public void setFilms(List<Film> films) {
 		this.films = films;
-	}
-
-	public List<ScreenRoom> getsRooms() {
-		return sRooms;
-	}
-
-	public void setsRooms(List<ScreenRoom> sRooms) {
-		this.sRooms = sRooms;
 	}
 
 	public Cinema() {}

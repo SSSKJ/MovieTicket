@@ -18,7 +18,7 @@ public class CinemaDaoImp extends AbstractJpaDAO<Cinema> implements CinemaDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Cinema> searchByFilm(int fid) {
-		String queryString = "select c from Cinema c where c.films.fid=?1";
+		String queryString = "select distinct c from Film f,Cinema c where c.cid in elements (f.cinemas) and f.fid=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				
@@ -27,6 +27,7 @@ public class CinemaDaoImp extends AbstractJpaDAO<Cinema> implements CinemaDao {
 		return result;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Cinema> searchByLocation(String location) {
 		
 		String queryString = "select c from Cinema c where c.location=?1";
