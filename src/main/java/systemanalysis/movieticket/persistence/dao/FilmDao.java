@@ -10,7 +10,7 @@ public interface FilmDao {
 	
 	List<Film> searchByDirector(int did);
 	
-	List<Film> searchByFilmType(int ftid);
+	List<Film> searchByFilmType(int ftid, String sort);//need to be modified and point out what sort can be
 	
 	List<Film> searchByFilmVersion(int fvid);
 	
@@ -18,7 +18,9 @@ public interface FilmDao {
 	
 	List<Film> searchByCinema(int cid);
 	
-	List<Film> searchByArea(String area);
+	List<Film> searchByArea(String area, String sort);//need to be completed and point out what sort can be
+	
+	List<Film> searchByAreaNFilmType(String area, int ftid, String sort);//need to be completeds
 	
 	Film findOne(int fid);
 	
