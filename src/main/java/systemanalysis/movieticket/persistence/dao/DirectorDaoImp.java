@@ -19,7 +19,7 @@ public class DirectorDaoImp extends AbstractJpaDAO<Director> implements Director
 
 	@SuppressWarnings("unchecked")
 	public List<Director> searchAllRelevantDirector(int fid) {
-		String queryString = "select d from Director d where d.films.fid=?1";
+		String queryString = "select distinct d from Film f,Director d where d.did in elements (f.d) and f.fid=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				

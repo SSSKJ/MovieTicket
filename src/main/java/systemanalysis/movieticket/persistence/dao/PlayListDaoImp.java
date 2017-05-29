@@ -18,7 +18,7 @@ public class PlayListDaoImp extends AbstractJpaDAO<PlayList> implements PlayList
 
 	@SuppressWarnings("unchecked")
 	public List<PlayList> searchByCinemaAndFilm(int cid, int fid) {
-		String queryString = "select pl from PlayList pl where pl.id.cinema.cid=?1 && pl.id.film.fid=?2";
+		String queryString = "select pl from PlayList pl where pl.cinema.cid=?1 && pl.film.fid=?2";
 		
 		Query query = entityManager.createQuery(queryString);
 		query.setParameter(1, cid);

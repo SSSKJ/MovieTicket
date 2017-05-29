@@ -31,7 +31,8 @@ public class FilmDaoImp extends AbstractJpaDAO<Film> implements FilmDao {
 	}
 
 	public List<Film> searchByActor(int aid) {
-		String queryString = "select f from Film f where f.a.aid=?1";
+		String queryString = "select f from Film f join f.a a where a.aid=?1";//if this doesn't work,try below
+		//String queryString = ""select f from Film f, Actor a where a.aid in elements (f.a) and a.aid=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				
@@ -41,7 +42,8 @@ public class FilmDaoImp extends AbstractJpaDAO<Film> implements FilmDao {
 	}
 
 	public List<Film> searchByDirector(int did) {
-		String queryString = "select f from Film f where f.d.did=?1";
+		String queryString = "select f from Film f join f.d d where d.did=?1";//if this doesn't work,try below
+		//String queryString = ""select f from Film f, Director d where d.did in elements (f.d) and d.did=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				
@@ -51,7 +53,8 @@ public class FilmDaoImp extends AbstractJpaDAO<Film> implements FilmDao {
 	}
 
 	public List<Film> searchByFilmType(int ftid) {
-		String queryString = "select f from Film f where f.ft.ftid=?1";
+		String queryString = "select f from Film f join f.ft ft where ft.ftid=?1";//if this doesn't work,try below
+		//String queryString = ""select f from Film f, FilmType ft where ft.ftid in elements (f.ft) and ft.ftid=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				
@@ -61,7 +64,8 @@ public class FilmDaoImp extends AbstractJpaDAO<Film> implements FilmDao {
 	}
 
 	public List<Film> searchByFilmVersion(int fvid) {
-		String queryString = "select f from Film f where f.fv.fvid=?1";
+		String queryString = "select f from Film f join f.fv fv where fv.fvid=?1";//if this doesn't work,try below
+		//String queryString = ""select f from Film f, FilmVersion fv where fv.fvid in elements (f.fv) and fv.fvid=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				
@@ -71,7 +75,8 @@ public class FilmDaoImp extends AbstractJpaDAO<Film> implements FilmDao {
 	}
 
 	public List<Film> searchByLanguage(int lid) {
-		String queryString = "select f from Film f where f.l.lid=?1";
+		String queryString = "select f from Film f join f.l l where l.lid=?1";//if this doesn't work,try below
+		//String queryString = ""select f from Film f, Language l where l.lid in elements (f.l) and l.lid=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				
@@ -80,16 +85,47 @@ public class FilmDaoImp extends AbstractJpaDAO<Film> implements FilmDao {
 		return result;
 	}
 
-	public List<Film> searchByArea(String area) {
-		return null;
-	}
-
 	public List<Film> searchByCinema(int cid) {
-		String queryString = "select f from Film f where f.cinemas.cid=?1";
+		String queryString = "select f from Film f join f.cinemas c where c.cid=?1";//if this doesn't work,try below
+		//String queryString = ""select f from Film f, Cinema c where c.cid in elements (f.cinema) and c.cid=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				
 		query.setParameter(1, cid);
+		List<Film> result = query.getResultList();
+		return result;
+	}
+
+	public List<Film> searchByFilmType(int ftid, String sort) {
+		String queryString = "select f from Film f join f.ft ft where ft.ftid=?1 order by f." + sort;//if this doesn't work,try below
+		//String queryString = ""select f from Film f, FilmType ft where ft.ftid in elements (f.ft) and ft.ftid=?1 order by f." + sort;
+		
+		Query query = entityManager.createQuery(queryString);
+				
+		query.setParameter(1, ftid);
+		List<Film> result = query.getResultList();
+		return result;
+	}
+
+	public List<Film> searchByArea(String area, String sort) {
+		String queryString = "select f from Film f where f.area=?1 order by f." + sort;//if this doesn't work,try below
+		//String queryString = ""select f from Film f, FilmType ft where ft.ftid in elements (f.ft) and ft.ftid=?1 order by f." + sort;
+		
+		Query query = entityManager.createQuery(queryString);
+				
+		query.setParameter(1, area);
+		List<Film> result = query.getResultList();
+		return result;
+	}
+
+	public List<Film> searchByAreaNFilmType(String area, int ftid, String sort) {
+		String queryString = "select f from Film f join f.ft ft where ft.ftid=?1 and f.area=?2 order by f." + sort;//if this doesn't work,try below
+		//String queryString = ""select f from Film f, FilmType ft where ft.ftid in elements (f.ft) and ft.ftid=?1 and f.area=?2 order by f." + sort;
+		
+		Query query = entityManager.createQuery(queryString);
+				
+		query.setParameter(1, ftid);
+		query.setParameter(2, area);
 		List<Film> result = query.getResultList();
 		return result;
 	}

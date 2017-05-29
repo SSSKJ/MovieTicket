@@ -30,9 +30,8 @@ public class PlayList implements Serializable {
 	@GeneratedValue
 	private int plid;
 	
-	@JoinColumn(name="srid", nullable=false)
-	@ManyToOne(fetch=FetchType.LAZY)
-	private ScreenRoom sRoom;
+	@Column(name="screenroom", nullable=false)
+	private String screenRoom;
 	
 	@JoinColumn(name="fid", nullable=false)
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -81,7 +80,7 @@ public class PlayList implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((sRoom == null) ? 0 : sRoom.hashCode());
+		result = prime * result + ((screenRoom == null) ? 0 : screenRoom.hashCode());
 		result = prime * result + ((film == null) ? 0 : film.hashCode());
 		result = prime * result + ((playDate == null) ? 0 : playDate.hashCode());
 		result = prime * result + ((playTime == null) ? 0 : playTime.hashCode());
@@ -104,13 +103,13 @@ public class PlayList implements Serializable {
 	}
 
 
-	public ScreenRoom getsRoom() {
-		return sRoom;
+	public String getsRoom() {
+		return screenRoom;
 	}
 
 
-	public void setsRoom(ScreenRoom sRoom) {
-		this.sRoom = sRoom;
+	public void setsRoom(String sRoom) {
+		this.screenRoom = sRoom;
 	}
 
 
@@ -197,10 +196,10 @@ public class PlayList implements Serializable {
 			return false;
 		
 		PlayList other = (PlayList)obj;
-		if (sRoom == null) {
-			if (other.sRoom != null)
+		if (screenRoom == null) {
+			if (other.screenRoom != null)
 				return false;
-		} else if (!sRoom.equals(other.sRoom)) {
+		} else if (!screenRoom.equals(other.screenRoom)) {
 				return false;
 		}
 		
@@ -243,7 +242,7 @@ public class PlayList implements Serializable {
 	@Override
 	public String toString() {
 		return "PlayList [ plid=" + plid
-				+ ", screenRoom=" + sRoom
+				+ ", screenRoom=" + screenRoom
 				+ ", film=" + film
 				+ ", playDate=" + playDate
 				+ ", playTime=" + playTime

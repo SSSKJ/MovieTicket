@@ -17,22 +17,10 @@ public class FilmVersionDaoImp extends AbstractJpaDAO<FilmVersion> implements Fi
 		super();
 		setClazz(FilmVersion.class);
 	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Film> searchAllRelevant(String versionType) {
-		//don't know if it is right
-		String queryString = "select fv.id.film from FilmVersion fv where fv.id.versionType=?1";
-				
-		Query query = entityManager.createQuery(queryString);
-		
-		query.setParameter(1, versionType);
-		List<Film> result = query.getResultList();
-		return result;
-	}
 
 	@SuppressWarnings("unchecked")
 	public List<FilmVersion> searchAllRelevantFilmVersion(int fid) {
-		String queryString = "select fv from FilmVersion fv where fv.films.fid=?1";
+		String queryString = "select distinct fv from Film f,FilmVersion fv where fv.fvid in elements (f.fv) and f.fid=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				

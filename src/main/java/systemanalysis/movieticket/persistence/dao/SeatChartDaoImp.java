@@ -18,7 +18,7 @@ public class SeatChartDaoImp extends AbstractJpaDAO<SeatChart> implements SeatCh
 
 	@SuppressWarnings("unchecked")
 	public List<SeatChart> searchAllRelevant(int plid) {
-		String queryString = "select sc from SeatChart sc where sc.playList.plid=?1";
+		String queryString = "select distinct sc from PlayList pl,SeatChart sc where sc.scid in elements (pl.seatChart) and pl.plid=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				

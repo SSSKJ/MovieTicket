@@ -7,7 +7,6 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import systemanalysis.movieticket.persistence.entity.Actor;
-import systemanalysis.movieticket.persistence.entity.Film;
 
 @Repository
 public class ActorDaoImp extends AbstractJpaDAO<Actor> implements ActorDao {
@@ -20,7 +19,7 @@ public class ActorDaoImp extends AbstractJpaDAO<Actor> implements ActorDao {
 	@SuppressWarnings("unchecked")
 	public List<Actor> searchAllRelevantActor(int fid) {
 		//don't know if it is right
-		String queryString = "select a from Actor a where a.films.fid=?1";
+		String queryString = "select distinct a from Film f,Actor a where a.aid in elements (f.a) and f.fid=?1";
 						
 		Query query = entityManager.createQuery(queryString);
 				

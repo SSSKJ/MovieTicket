@@ -18,7 +18,7 @@ public class LanguageDaoImp extends AbstractJpaDAO<Language> implements Language
 
 	@SuppressWarnings("unchecked")
 	public List<Language> searchAllRelevantLanguage(int fid) {
-		String queryString = "select l from Language l where l.films.fid=?1";
+		String queryString = "select distinct l from Film f,Language l where l.lid in elements (f.l) and f.fid=?1";
 		
 		Query query = entityManager.createQuery(queryString);
 				
