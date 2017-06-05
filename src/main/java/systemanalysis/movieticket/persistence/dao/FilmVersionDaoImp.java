@@ -6,7 +6,6 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import systemanalysis.movieticket.persistence.entity.Film;
 import systemanalysis.movieticket.persistence.entity.FilmVersion;
 
 //this is like 3D/2D/IMAX

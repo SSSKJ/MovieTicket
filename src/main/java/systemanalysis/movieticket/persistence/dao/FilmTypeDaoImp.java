@@ -6,7 +6,6 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import systemanalysis.movieticket.persistence.entity.Film;
 import systemanalysis.movieticket.persistence.entity.FilmType;
 
 //filmtype is like act,love,...ect
@@ -16,6 +15,18 @@ public class FilmTypeDaoImp extends AbstractJpaDAO<FilmType> implements FilmType
 	public FilmTypeDaoImp() {
 		super();
 		setClazz(FilmType.class);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<FilmType> isExist(String type) {
+		
+		String queryString = "select ft from FilmType ft where ft.filmType=?1";
+		
+		Query query = entityManager.createQuery(queryString);
+				
+		query.setParameter(1, type);
+		List<FilmType> result = query.getResultList();
+		return result;
 	}
 	
 

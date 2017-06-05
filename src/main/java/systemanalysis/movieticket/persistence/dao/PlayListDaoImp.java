@@ -17,12 +17,24 @@ public class PlayListDaoImp extends AbstractJpaDAO<PlayList> implements PlayList
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<PlayList> searchByCinemaAndFilm(int cid, int fid) {
-		String queryString = "select pl from PlayList pl where pl.cinema.cid=?1 && pl.film.fid=?2";
+	public List<PlayList> searchByCinemaAndFilm(int cid, int fid, int date) {
+		String queryString = "select pl from PlayList pl where pl.cinema.cid=?1 && pl.film.fid=?2 && pl.playdate=?3";
 		
 		Query query = entityManager.createQuery(queryString);
 		query.setParameter(1, cid);
 		query.setParameter(2, fid);
+		query.setParameter(3, date);
+		List<PlayList> result = query.getResultList();
+		return result; 
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<PlayList> searchByCinema(int cid, int date) {
+		String queryString = "select pl from PlayList pl where pl.cinema.cid=?1 && pl.playdate=?2 order by pl.film.fname";
+		
+		Query query = entityManager.createQuery(queryString);
+		query.setParameter(1, cid);
+		query.setParameter(2, date);
 		List<PlayList> result = query.getResultList();
 		return result; 
 	}

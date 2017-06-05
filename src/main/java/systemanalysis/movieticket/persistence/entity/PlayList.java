@@ -2,7 +2,6 @@ package systemanalysis.movieticket.persistence.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,8 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="playlist")
@@ -60,12 +57,10 @@ public class PlayList implements Serializable {
 	private List<SeatChart> seatChart = new ArrayList<SeatChart>();
 	
 	@Column(name="playdate", nullable=false)
-	@Temporal(TemporalType.DATE)
-	private Date playDate;
+	private int playDate;
 	
 	@Column(name="playtime", nullable=false)
-	@Temporal(TemporalType.DATE)
-	private Date playTime;
+	private String playTime;
 	
 	@Column(name="totalseat", nullable=false)
 	private int totalSeat;
@@ -82,7 +77,7 @@ public class PlayList implements Serializable {
 		int result = 1;
 		result = prime * result + ((screenRoom == null) ? 0 : screenRoom.hashCode());
 		result = prime * result + ((film == null) ? 0 : film.hashCode());
-		result = prime * result + ((playDate == null) ? 0 : playDate.hashCode());
+		result = prime * result + playDate;
 		result = prime * result + ((playTime == null) ? 0 : playTime.hashCode());
 		result = prime * result + plid;
 		result = prime * result + totalSeat;
@@ -133,22 +128,22 @@ public class PlayList implements Serializable {
 	}
 
 
-	public Date getPlayDate() {
+	public int getPlayDate() {
 		return playDate;
 	}
 
 
-	public void setPlayDate(Date playDate) {
+	public void setPlayDate(int playDate) {
 		this.playDate = playDate;
 	}
 
 
-	public Date getPlayTime() {
+	public String getPlayTime() {
 		return playTime;
 	}
 
 
-	public void setPlayTime(Date playTime) {
+	public void setPlayTime(String playTime) {
 		this.playTime = playTime;
 	}
 
@@ -210,12 +205,8 @@ public class PlayList implements Serializable {
 				return false;
 		}
 		
-		if (playDate == null) {
-			if (other.playDate != null)
-				return false;
-		} else if (!playDate.equals(other.playDate)) {
-				return false;
-		}
+		if (playDate != other.playDate)
+			return false;
 		
 		if (playTime == null) {
 			if (other.playTime != null)

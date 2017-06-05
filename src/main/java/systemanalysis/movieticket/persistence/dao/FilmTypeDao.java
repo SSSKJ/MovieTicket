@@ -10,6 +10,8 @@ public interface FilmTypeDao {
 	
 	//FilmType findOne(FilmTypeId aid);
 	
+	List<FilmType> isExist(String type);
+	
 	List<FilmType> findAll();
 	
     void create(FilmType entity);

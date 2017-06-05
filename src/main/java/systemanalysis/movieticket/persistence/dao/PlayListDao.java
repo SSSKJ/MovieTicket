@@ -6,7 +6,9 @@ import systemanalysis.movieticket.persistence.entity.PlayList;
 
 public interface PlayListDao {
 	
-	List<PlayList> searchByCinemaAndFilm(int cid, int fid);
+	List<PlayList> searchByCinemaAndFilm(int cid, int fid, int date);
+	
+	List<PlayList> searchByCinema(int cid, int date);
 	
 	PlayList findOne(int plid);
 	

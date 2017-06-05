@@ -15,7 +15,8 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:component-scan base-package="systemanalysis.movieticket"/>
-    <context:property-placeholder location="classpath:persistence-mysql.properties"/>    
+    <context:property-placeholder location="classpath:persistence-mysql.properties"/>
+    <context:property-placeholder location="classpath:cache-redis.properties"/>    
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler />
     
@@ -90,6 +91,28 @@
  
    <bean id="persistenceExceptionTranslationPostProcessor"
       class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+      
+   <!--
+   <bean id="redisHttpSessionConfiguration"
+      class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+      <property name="maxInactiveIntervalInSeconds" value="600"/>
+    </bean>
+    
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+      <property name="maxTotal" value="100" />
+      <property name="maxIdle" value="10" />
+    </bean>
+    
+    <bean id="jedisConnectionFactory"
+      class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" destroy-method="destroy">
+      <property name="hostName" value="${redis_hostname}"/>
+      <property name="port" value="${redis_port}"/>
+      <property name="password" value="${redis_pwd}" />
+      <property name="timeout" value="${redis_timeout}"/>
+      <property name="usePool" value="true"/>
+      <property name="poolConfig" ref="jedisPoolConfig"/>
+    </bean>
+    -->
 
 
 </beans>

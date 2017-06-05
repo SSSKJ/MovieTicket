@@ -1,10 +1,7 @@
 package systemanalysis.movieticket.persistence.entity;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,10 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import javassist.expr.NewArray;
 
 @Entity
 @Table(name="orderform")
@@ -38,15 +31,13 @@ public class OrderForm implements Serializable {
 	private User user;
 	
 	@Column(name="date", nullable=false)
-	@Temporal(TemporalType.DATE)
-	private Date date;
+	private String date;
 	
 	@Column(name="moviename", nullable=false)
 	private String moviename;
 
 	@Column(name="movietime", nullable=false)
-	@Temporal(TemporalType.TIME)
-	private Date movietime;
+	private String movietime;
 	
 	@Column(name="cinema", nullable=false)
 	private String cinema;
@@ -60,6 +51,17 @@ public class OrderForm implements Serializable {
 	@Column(name="screeningroom", nullable=false)
 	private String screeningroom;
 	
+	/*@Column(name="state", nullable=false)
+	private String state;
+	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}*/
+
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="id.orderform")
 	private List<SeatInOrder> s = new ArrayList<SeatInOrder>();
 	
@@ -90,17 +92,11 @@ public class OrderForm implements Serializable {
 	}
 	
 	public void setDate(String date) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			this.date = sdf.parse(date);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.date = date;
 	}
 	
 	public String getDate() {
-		return date.toString();
+		return date;
 	}
 	
 	public void setMoviename(String moviename) {
@@ -116,13 +112,7 @@ public class OrderForm implements Serializable {
 	}
 
 	public void setMovietime(String movietime) {
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		try {
-			this.movietime = sdf.parse(movietime);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.movietime = movietime;
 	}
 
 	public String getCinema() {

@@ -8,7 +8,6 @@ D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\entit
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\DirectorDao.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\entity\PlayList.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\FilmVersionDao.java
-D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\entity\ScreenRoom.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\service\MainService.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\UserDao.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\CinemaDaoImp.java
@@ -34,13 +33,15 @@ D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\web\controller\Us
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\LanguageDao.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\entity\SeatInOrder.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\web\controller\MovieController.java
+D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dto\UserDto.java
+D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\init\DataInit.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\PlayListDao.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\entity\Preference.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\service\MovieService.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\FilmVersionDaoImp.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\OrderFormDao.java
+D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dto\InfoDto.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\entity\SeatChart.java
-D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\service\OrderService.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\entity\Actor.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\ActorDao.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\entity\OrderForm.java
@@ -49,5 +50,4 @@ D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\entit
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\web\controller\MainController.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\ActorDaoImp.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\entity\PreferenceId.java
-D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\web\controller\OrderController.java
 D:\MovieTicket\server\src\main\java\systemanalysis\movieticket\persistence\dao\SeatChartDaoImp.java

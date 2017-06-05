@@ -3,7 +3,6 @@ package systemanalysis.movieticket.persistence.dao;
 import java.util.List;
 
 import systemanalysis.movieticket.persistence.entity.Cinema;
-import systemanalysis.movieticket.persistence.entity.Film;
 
 public interface CinemaDao {
 	
@@ -11,9 +10,11 @@ public interface CinemaDao {
 	
 	List<Cinema> searchByLocation(String location);
 	
+	List<Cinema> searchByFilmNDateNLocation(int fid, String location);
+	
 	Cinema findOne(int cid);
 	
-	Cinema findOne(String cname);
+	List<Cinema> isExist(String cname, String location);
 	
 	void deleteById(int cid);
 	

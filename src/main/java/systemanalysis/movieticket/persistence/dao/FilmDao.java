@@ -10,7 +10,7 @@ public interface FilmDao {
 	
 	List<Film> searchByDirector(int did);
 	
-	List<Film> searchByFilmType(int ftid, String sort);//need to be modified and point out what sort can be
+	List<Film> searchByFilmType(String filmtype, String sort);//need to be modified and point out what sort can be
 	
 	List<Film> searchByFilmVersion(int fvid);
 	
@@ -20,11 +20,11 @@ public interface FilmDao {
 	
 	List<Film> searchByArea(String area, String sort);//need to be completed and point out what sort can be
 	
-	List<Film> searchByAreaNFilmType(String area, int ftid, String sort);//need to be completeds
+	List<Film> searchByAreaNFilmType(String area, String filmtype, String sort);//need to be completeds
 	
 	Film findOne(int fid);
 	
-	Film findOne(String fname);
+	List<Film> isExist(String fname);
 	
 	List<Film> findAll();
 	

@@ -15,8 +15,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import javassist.expr.NewArray;
-
 @Entity
 @Table(name="film")
 public class Film  implements Serializable{
@@ -31,7 +29,7 @@ public class Film  implements Serializable{
 	@Column(name="fname", nullable=false)
 	private String fname;
 	
-	@Column(name="introduction", nullable=false)
+	@Column(name="introduction")
 	private String introduction;
 	
 	@Column(name="length", nullable=false)
@@ -44,11 +42,22 @@ public class Film  implements Serializable{
 	private String area;
 	
 	@Column(name="premiereDate", nullable=false)
-	private String premiereDate;
+	private int premiereDate;
+	
+	@Column(name="sale", nullable=false)
+	private int sale;
 	
 	/*@Column(name="posterURL", nullable=false)
 	private String posterURL;*/
 	
+	public int getSale() {
+		return sale;
+	}
+
+	public void setSale(int sale) {
+		this.sale = sale;
+	}
+
 	@ManyToMany(cascade={CascadeType.ALL,CascadeType.ALL,CascadeType.MERGE})
 	@JoinTable(name="film_actor",
 				joinColumns={
@@ -172,7 +181,7 @@ public class Film  implements Serializable{
 	public Film() {}
 	
 	public Film(int fid, String fname, String introduction, String length, float score, String area,
-			String premiereDate, String posterURL) {
+			int premiereDate, String posterURL) {
 		this.fid = fid;
 		this.fname = fname;
 		this.introduction = introduction;
@@ -233,11 +242,11 @@ public class Film  implements Serializable{
 		this.area = area;
 	}
 
-	public String getPremiereDate() {
+	public int getPremiereDate() {
 		return premiereDate;
 	}
 
-	public void setPremiereDate(String premiereDate) {
+	public void setPremiereDate(int premiereDate) {
 		this.premiereDate = premiereDate;
 	}
 
