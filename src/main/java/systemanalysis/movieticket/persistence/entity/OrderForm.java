@@ -49,7 +49,7 @@ public class OrderForm implements Serializable {
 	private float price;
 	
 	@Column(name="screeningroom", nullable=false)
-	private String screeningroom;
+	private int screeningroom;
 	
 	/*@Column(name="state", nullable=false)
 	private String state;
@@ -139,11 +139,11 @@ public class OrderForm implements Serializable {
 		this.price = price;
 	}
 
-	public String getScreeningroom() {
+	public int getScreeningroom() {
 		return screeningroom;
 	}
 
-	public void setScreeningroom(String screeningroom) {
+	public void setScreeningroom(int screeningroom) {
 		this.screeningroom = screeningroom;
 	}
 
@@ -157,7 +157,7 @@ public class OrderForm implements Serializable {
 		result = prime * result + ((movietime == null) ? 0 : movietime.hashCode());
 		result = prime * result + oid;
 		result = prime * result + Float.floatToIntBits(price);
-		result = prime * result + ((screeningroom == null) ? 0 : screeningroom.hashCode());
+		result = prime * result + screeningroom;
 		result = prime * result + ticketamount;
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -196,10 +196,7 @@ public class OrderForm implements Serializable {
 			return false;
 		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
 			return false;
-		if (screeningroom == null) {
-			if (other.screeningroom != null)
-				return false;
-		} else if (!screeningroom.equals(other.screeningroom))
+		if (screeningroom != other.screeningroom)
 			return false;
 		if (ticketamount != other.ticketamount)
 			return false;

@@ -28,7 +28,7 @@ public class PlayList implements Serializable {
 	private int plid;
 	
 	@Column(name="screenroom", nullable=false)
-	private String screenRoom;
+	private int screenRoom;
 	
 	@JoinColumn(name="fid", nullable=false)
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -65,8 +65,8 @@ public class PlayList implements Serializable {
 	@Column(name="totalseat", nullable=false)
 	private int totalSeat;
 	
-	@Column(name="emptyseat", nullable=false)
-	private int emptySeat;
+	/*@Column(name="emptyseat", nullable=false)
+	private int emptySeat;*/
 	
 	@Column(name="price", nullable=false)
 	private float price;
@@ -75,13 +75,13 @@ public class PlayList implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((screenRoom == null) ? 0 : screenRoom.hashCode());
+		result = prime * result + screenRoom;
 		result = prime * result + ((film == null) ? 0 : film.hashCode());
 		result = prime * result + playDate;
 		result = prime * result + ((playTime == null) ? 0 : playTime.hashCode());
 		result = prime * result + plid;
 		result = prime * result + totalSeat;
-		result = prime * result + emptySeat;
+		//result = prime * result + emptySeat;
 		result = prime * result + Float.floatToIntBits(price);
 		return result;
 	}
@@ -98,12 +98,12 @@ public class PlayList implements Serializable {
 	}
 
 
-	public String getsRoom() {
+	public int getsRoom() {
 		return screenRoom;
 	}
 
 
-	public void setsRoom(String sRoom) {
+	public void setsRoom(int sRoom) {
 		this.screenRoom = sRoom;
 	}
 
@@ -159,14 +159,14 @@ public class PlayList implements Serializable {
 
 
 
-	public int getEmptySeat() {
+	/*public int getEmptySeat() {
 		return emptySeat;
 	}
 
 
 	public void setEmptySeat(int emptySeat) {
 		this.emptySeat = emptySeat;
-	}
+	}*/
 
 
 	public float getPrice() {
@@ -191,12 +191,8 @@ public class PlayList implements Serializable {
 			return false;
 		
 		PlayList other = (PlayList)obj;
-		if (screenRoom == null) {
-			if (other.screenRoom != null)
-				return false;
-		} else if (!screenRoom.equals(other.screenRoom)) {
-				return false;
-		}
+		if (screenRoom != other.screenRoom)
+			return false;
 		
 		if (film == null) {
 			if (other.film != null)
@@ -221,8 +217,8 @@ public class PlayList implements Serializable {
 		if (totalSeat != other.totalSeat)
 			return false;
 		
-		if (emptySeat != other.emptySeat)
-			return false;
+		/*if (emptySeat != other.emptySeat)
+			return false;*/
 		
 		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
 			return false;
@@ -238,7 +234,7 @@ public class PlayList implements Serializable {
 				+ ", playDate=" + playDate
 				+ ", playTime=" + playTime
 				+ ", totalSeat=" + totalSeat
-				+ ", emptySeat=" + emptySeat
+				//+ ", emptySeat=" + emptySeat
 				+ ", price=" + price;
 	}
 }

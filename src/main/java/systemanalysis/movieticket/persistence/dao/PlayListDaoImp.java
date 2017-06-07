@@ -38,7 +38,19 @@ public class PlayListDaoImp extends AbstractJpaDAO<PlayList> implements PlayList
 		List<PlayList> result = query.getResultList();
 		return result; 
 	}
-
+	
+	public List<PlayList> searchByTimeNRoom(int date, String time, int room) {
+		
+		String queryString = "select pl from PlayList pl where pl.playTime=?1 and pl.screenRoom=?2 and pl.playDate=?3";
+		
+		Query query = entityManager.createQuery(queryString);
+		query.setParameter(1, time);
+		query.setParameter(2, room);
+		query.setParameter(3, date);
+		List<PlayList> result = query.getResultList();
+		return result; 
+	}
+	
 	public PlayList findOne(int plid) {
 		return entityManager.find(PlayList.class, plid);
 	}

@@ -5,7 +5,7 @@ import systemanalysis.movieticket.persistence.entity.PlayList;
 public class PlayListDto {
 	
 	int id;
-	String room;
+	int room;
 	String time;
 	float price;
 	
@@ -26,11 +26,11 @@ public class PlayListDto {
 		this.id = id;
 	}
 	
-	public String getRoom() {
+	public int getRoom() {
 		return room;
 	}
 	
-	public void setRoom(String room) {
+	public void setRoom(int room) {
 		this.room = room;
 	}
 	

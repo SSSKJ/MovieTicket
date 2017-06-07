@@ -10,6 +10,8 @@ public interface PlayListDao {
 	
 	List<PlayList> searchByCinema(int cid, int date);
 	
+	List<PlayList> searchByTimeNRoom(int date, String time, int room);
+	
 	PlayList findOne(int plid);
 	
 	void deleteById(int plid);

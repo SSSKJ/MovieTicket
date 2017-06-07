@@ -23,7 +23,7 @@ public class Film  implements Serializable{
 	
 	@Column(name="fid", nullable=false)
 	@Id
-	@GeneratedValue
+	//@GeneratedValue
 	private int fid;
 	
 	@Column(name="fname", nullable=false)
@@ -33,7 +33,7 @@ public class Film  implements Serializable{
 	private String introduction;
 	
 	@Column(name="length", nullable=false)
-	private String length;
+	private float length;
 	
 	@Column(name="score", nullable=false)
 	private float score;//may should be an int???
@@ -180,7 +180,7 @@ public class Film  implements Serializable{
 
 	public Film() {}
 	
-	public Film(int fid, String fname, String introduction, String length, float score, String area,
+	public Film(int fid, String fname, String introduction, float length, float score, String area,
 			int premiereDate, String posterURL) {
 		this.fid = fid;
 		this.fname = fname;
@@ -218,11 +218,11 @@ public class Film  implements Serializable{
 		this.introduction = introduction;
 	}
 
-	public String getLength() {
+	public float getLength() {
 		return length;
 	}
 
-	public void setLength(String length) {
+	public void setLength(float length) {
 		this.length = length;
 	}
 

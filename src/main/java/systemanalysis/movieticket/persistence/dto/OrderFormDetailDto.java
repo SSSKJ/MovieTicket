@@ -11,7 +11,7 @@ public class OrderFormDetailDto {
 	String cinema;
 	int ticketamount;
 	float price;
-	String screeningroom;
+	int screeningroom;
 	
 	public OrderFormDetailDto() {}
 	
@@ -82,11 +82,11 @@ public class OrderFormDetailDto {
 		this.price = price;
 	}
 	
-	public String getScreeningroom() {
+	public int getScreeningroom() {
 		return screeningroom;
 	}
 	
-	public void setScreeningroom(String screeningroom) {
+	public void setScreeningroom(int screeningroom) {
 		this.screeningroom = screeningroom;
 	}
 }

@@ -100,13 +100,14 @@ public class MovieService {
 		return playlistdao.findOne(playlistid);
 	}
 	
-	public void setMovie(String movie, String[] types, String area, int sale, int date, int score) {
+	public void setMovie(int id, String movie, String[] types, String area, int sale, int date, float score) {
 		List<Film> film = filmdao.isExist(movie);
 		if (!film.isEmpty()) return;
 		Film f = new Film();
+		f.setFid(id);
 		f.setArea(area);
 		f.setFname(movie);
-		f.setLength("70min");
+		f.setLength(70);
 		f.setPremiereDate(date);
 		f.setSale(sale);
 		f.setScore(score);
@@ -120,6 +121,33 @@ public class MovieService {
 				filmtype.getFilms().add(f);
 				filmtypedao.create(filmtype);
 				f.getFt().add(filmtype);
+			}
+		}
+	}
+	
+	public boolean checkRoom(int date, String time, int room) {
+		if(playlistdao.searchByTimeNRoom(date, time, room).isEmpty())
+			return true;
+		return false;
+	}
+	
+	public void setPlayList(Cinema c, int date, String time, Film f, float price, int seats, int room) {
+		PlayList p = new PlayList();
+		p.setCinema(c);
+		p.setPlayDate(date);
+		p.setPlayTime(time);
+		p.setFilm(f);
+		p.setPrice(price);
+		p.setTotalSeat(seats);
+		p.setsRoom(room);
+		playlistdao.create(p);
+		for (int row = 1; row < 11; row++) {
+			for (int col = 1; col < 11; col++) {
+				SeatChart seat = new SeatChart();
+				seat.setAvailable(true);
+				seat.setColumn(col);
+				seat.setRow(row);
+				seat.getPlayList().add(p);
 			}
 		}
 	}

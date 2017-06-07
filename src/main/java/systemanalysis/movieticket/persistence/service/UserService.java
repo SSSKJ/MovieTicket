@@ -12,6 +12,8 @@ import systemanalysis.movieticket.persistence.dao.PlayListDao;
 import systemanalysis.movieticket.persistence.dao.PreferenceDao;
 import systemanalysis.movieticket.persistence.dao.SeatChartDao;
 import systemanalysis.movieticket.persistence.dao.UserDao;
+import systemanalysis.movieticket.persistence.dao.FilmDao;
+import systemanalysis.movieticket.persistence.entity.Film;
 import systemanalysis.movieticket.persistence.entity.OrderForm;
 import systemanalysis.movieticket.persistence.entity.PlayList;
 import systemanalysis.movieticket.persistence.entity.Preference;
@@ -39,6 +41,9 @@ public class UserService {
 	
 	@Autowired
 	private PlayListDao pldao;
+	
+	@Autowired
+	private FilmDao filmdao;
 	
 	public User getUser(String emailaddress) {
 		return userdao.findOne(emailaddress);
@@ -166,6 +171,10 @@ public class UserService {
 		orderform.setScreeningroom(p.getsRoom());
 		orderform.setUser(user);
 		odao.create(orderform);
+		Film film = filmdao.findOne(p.getFilm().getFid());
+		int sale = film.getSale();
+		film.setSale(sale + seats.length);//need to be modified
+		filmdao.update(film);
 		logger.info("User: " + email + " add OrderForm(oid: " + orderform.getOid() + ") successfully");//maybe can not get oid
 		return true;
 	}

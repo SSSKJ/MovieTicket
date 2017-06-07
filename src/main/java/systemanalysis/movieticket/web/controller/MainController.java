@@ -56,8 +56,10 @@ public class MainController {
 	@RequestMapping(method = RequestMethod.POST, value = "/checkemail")
 	public void checkemail(String email, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		logger.info("Check if Email: " + email + " Exist");
-		if (mainservice.check(email))
+		if (!mainservice.check(email)) {
 			response.setStatus(200);
+			return;
+		}
 		response.setStatus(409);
 	}
 	
@@ -81,7 +83,7 @@ public class MainController {
 		System.out.println(user.getEmail() + "........" + user.getPassword() + ".............");
 		int status = mainservice.Login(user);
 		if (status == 0) {
-			logger.info("Login, but Email: " + user.getEmail() + "doesn't Exist");
+			logger.info("Login, but Email: " + user.getEmail() + " doesn't Exist");
 			response.setStatus(404);
 		} else if (status == 1) {
 			logger.info("Login, but Password for Email: " + user.getEmail() + " is Incorrect");
